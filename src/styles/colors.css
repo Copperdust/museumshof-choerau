@@ -26,8 +26,8 @@
   --section-border: rgba(80, 5, 0, 0.1);
 
   /* ===== Navbar ===== */
-  --nav-bg: rgba(236, 180, 69, 0.95);
-  --nav-bg-mobile: rgba(236, 180, 69, 0.98);
+  --nav-bg: var(--color-gold);
+  --nav-bg-mobile: var(--color-gold);
   --nav-shadow: rgba(80, 5, 0, 0.15);
   --nav-link: var(--color-maroon);
   --nav-link-hover: var(--color-brown);

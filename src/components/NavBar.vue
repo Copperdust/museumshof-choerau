@@ -58,7 +58,6 @@ onUnmounted(() => {
   right: 0;
   z-index: 1000;
   background: var(--nav-bg);
-  backdrop-filter: blur(10px);
   transition: box-shadow 0.3s;
 }
 

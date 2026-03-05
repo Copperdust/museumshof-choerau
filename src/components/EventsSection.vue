@@ -35,16 +35,14 @@ const sortedEvents = props.events
   <section id="termine" class="site-section">
     <div class="container">
       <h2>Termine & Veranstaltungen</h2>
-      <div v-if="sortedEvents.length" class="events-list">
-        <article v-for="event in sortedEvents" :key="event.title + event.date" class="event-card">
+      <div v-if="sortedEvents.length" class="events-grid">
+        <article v-for="event in sortedEvents" :key="event.title + event.date" class="event-row">
           <div class="event-date">
-            <span class="day">{{ new Date(event.date).getDate() }}</span>
             <span class="month">{{ new Date(event.date).toLocaleDateString('de-DE', { month: 'short' }) }}</span>
+            <span class="day">{{ new Date(event.date).getDate() }}</span>
+            <span class="year">{{ new Date(event.date).getFullYear() }}</span>
           </div>
-          <div class="event-info">
-            <h3>{{ event.title }}</h3>
-            <p>{{ event.description }}</p>
-          </div>
+          <div class="event-title">{{ event.title }}</div>
         </article>
       </div>
       <p v-else class="no-events">
@@ -61,57 +59,69 @@ const sortedEvents = props.events
   padding: 0 1.5rem;
 }
 
-.events-list {
-  max-width: 700px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.75rem;
 }
 
-.event-card {
-  display: flex;
-  gap: 1.5rem;
+.event-row {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  align-items: center;
+  gap: 1rem;
   background: var(--card-bg);
   border-radius: 8px;
-  padding: 1.5rem;
+  padding: 0.75rem 1rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .event-date {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 60px;
-  padding: 0.5rem;
-  background: var(--event-date-bg);
-  color: var(--event-date-text);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
+  width: 52px;
   border-radius: 6px;
-}
-
-.event-date .day {
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1;
+  overflow: hidden;
+  background: var(--card-bg);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 .event-date .month {
-  font-size: 0.8rem;
+  width: 100%;
+  text-align: center;
+  font-size: 0.65rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  padding-top: 0.2rem;
+  padding-bottom: 0.1rem;
+  background: var(--event-date-bg);
+  color: var(--event-date-text);
 }
 
-.event-info h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.25rem;
+.event-date .day {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+  padding-top: 0.2rem;
+  padding-bottom: 0.1rem;
   color: var(--card-heading);
 }
 
-.event-info p {
-  color: var(--card-text);
-  font-size: 0.95rem;
+.event-date .year {
+  font-size: 0.6rem;
+  color: var(--body-text-light);
+  padding-bottom: 0.2rem;
 }
+
+.event-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--card-heading);
+  line-height: 1.2;
+}
+
 
 .no-events {
   text-align: center;
