@@ -55,6 +55,17 @@ function isPast(dateStr: string): boolean {
       <p v-else class="no-events">
         Derzeit sind keine Veranstaltungen geplant. Schauen Sie bald wieder vorbei!
       </p>
+      <div class="booking-wrapper">
+        <h3>Terminbuchung</h3>
+        <iframe
+          src="https://app.agendize.com/book/iframe/1016154753579309?lang=de"
+          width="100%"
+          height="600"
+          frameborder="0"
+          loading="lazy"
+          title="Terminbuchung Museumshof Chörau"
+        ></iframe>
+      </div>
     </div>
   </section>
 </template>
@@ -129,6 +140,23 @@ function isPast(dateStr: string): boolean {
   line-height: 1.2;
 }
 
+
+.booking-wrapper {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.booking-wrapper h3 {
+  font-size: 1.3rem;
+  color: var(--section-heading);
+  margin-bottom: 1rem;
+}
+
+.booking-wrapper iframe {
+  max-width: 800px;
+  border-radius: 8px;
+  border: 0;
+}
 
 .event-row.past {
   opacity: 0.5;
