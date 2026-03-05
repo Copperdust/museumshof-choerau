@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.vue';
+import HeroSection from '../components/HeroSection.vue';
+import ExhibitionsSection from '../components/ExhibitionsSection.vue';
+import GallerySection from '../components/GallerySection.vue';
+import EventsSection from '../components/EventsSection.vue';
+import HoursSection from '../components/HoursSection.vue';
+import DirectionsSection from '../components/DirectionsSection.vue';
+import ContactSection from '../components/ContactSection.vue';
+import FooterSection from '../components/FooterSection.vue';
+
+// Load events from markdown files in content/events/
+const eventFiles = import.meta.glob('../content/events/*.md', { eager: true });
+const events = Object.values(eventFiles).map((file: any) => ({
+  title: file.frontmatter.title,
+  date: file.frontmatter.date,
+  description: file.frontmatter.description || '',
+}));
+---
+
+<Layout>
+  <NavBar client:load />
+  <HeroSection />
+  <ExhibitionsSection />
+  <GallerySection client:visible />
+  <EventsSection events={events} />
+  <HoursSection />
+  <DirectionsSection />
+  <ContactSection client:visible />
+  <FooterSection />
+</Layout>
