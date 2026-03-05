@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, nextTick, onMounted, onUnmounted } from 'vue'
+import { ref, computed, nextTick, onMounted, onUnmounted } from 'vue'
 
 interface BannerImage {
   src: string
@@ -11,9 +11,13 @@ const props = withDefaults(defineProps<{
   images: BannerImage[]
   height?: string
   parallax?: boolean
+  slant?: number
+  imageSlant?: number
 }>(), {
   height: '40vh',
   parallax: true,
+  slant: 0,
+  imageSlant: 0,
 })
 
 function pickRandom(exclude: string[]): BannerImage {
@@ -77,6 +81,48 @@ function onScroll() {
   }
 }
 
+// Slant: diagonal clip on the banner container
+const bannerStyle = computed(() => {
+  const s: Record<string, string> = { height: props.height }
+  if (props.slant) {
+    const abs = Math.abs(props.slant)
+    // Negative = top-left lower, positive = top-right lower
+    if (props.slant > 0) {
+      s.clipPath = `polygon(0 ${abs}px, 100% 0, 100% calc(100% - ${abs}px), 0 100%)`
+    } else {
+      s.clipPath = `polygon(0 0, 100% ${abs}px, 100% 100%, 0 calc(100% - ${abs}px))`
+    }
+    s.marginTop = `-${abs}px`
+    s.marginBottom = `-${abs}px`
+  }
+  return s
+})
+
+// Image slant: diagonal dividers between the 3 images via clip-path
+function imageClip(index: number): Record<string, string> {
+  if (!props.imageSlant) return {}
+  const abs = Math.abs(props.imageSlant)
+  const dir = props.imageSlant > 0
+  const style: Record<string, string> = { margin: `0 -${abs}px` }
+  // 3 images: first, middle, last
+  if (index === 0) {
+    style.marginLeft = '0'
+    style.clipPath = dir
+      ? `polygon(0 0, 100% 0, calc(100% - ${abs}px) 100%, 0 100%)`
+      : `polygon(0 0, calc(100% - ${abs}px) 0, 100% 100%, 0 100%)`
+  } else if (index === 2) {
+    style.marginRight = '0'
+    style.clipPath = dir
+      ? `polygon(${abs}px 0, 100% 0, 100% 100%, 0 100%)`
+      : `polygon(0 0, 100% 0, 100% 100%, ${abs}px 100%)`
+  } else {
+    style.clipPath = dir
+      ? `polygon(${abs}px 0, 100% 0, calc(100% - ${abs}px) 100%, 0 100%)`
+      : `polygon(0 0, calc(100% - ${abs}px) 0, 100% 100%, ${abs}px 100%)`
+  }
+  return style
+}
+
 onMounted(() => {
   scheduleNext()
   if (props.parallax) {
@@ -92,9 +138,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="banner" ref="banner" :style="{ height: props.height }">
+  <div class="banner" ref="banner" :style="bannerStyle">
     <div :class="['banner-images', { parallax: props.parallax }]" :style="props.parallax ? { transform: `translateY(${scrollOffset}px)` } : {}">
-      <div v-for="(img, i) in bannerImages" :key="i" class="banner-image">
+      <div v-for="(img, i) in bannerImages" :key="i" class="banner-image" :style="imageClip(i)">
         <img :src="img.src" alt="Museumshof Chörau" />
         <img
           v-if="incoming && incoming.slot === i"
