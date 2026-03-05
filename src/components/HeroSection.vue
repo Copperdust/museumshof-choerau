@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, nextTick, onMounted, onUnmounted } from 'vue'
 
 interface HeroImage {
   src: string
@@ -41,9 +41,14 @@ function scheduleNext() {
 
     incoming.value = { slot, src: next.src }
 
-    setTimeout(() => {
+    setTimeout(async () => {
       heroImages.value[slot] = next
-      incoming.value = null
+      await nextTick()
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          incoming.value = null
+        })
+      })
     }, FADE_DURATION)
 
     currentSlot = (currentSlot + 1) % 3
@@ -122,10 +127,10 @@ onUnmounted(() => {
 
 .hero-overlay {
   position: absolute;
-  top: 70%;
+  bottom: 10%;
   left: 50%;
   padding: 3rem;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   min-width: calc(50vw + 600px);
   display: flex;
   align-items: center;
