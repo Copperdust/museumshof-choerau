@@ -61,7 +61,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section id="start" class="hero">
+  <div id="start" class="hero">
     <div class="hero-images">
       <div v-for="(img, i) in heroImages" :key="i" class="hero-image">
         <img :src="img.src" alt="Museumshof Chörau" />
@@ -79,13 +79,12 @@ onUnmounted(() => {
         <p class="subtitle">Das Leben in den Jahren 1930 &ndash; 1989</p>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <style scoped>
 .hero {
   position: relative;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   color: #faf6f1;
@@ -122,12 +121,19 @@ onUnmounted(() => {
 }
 
 .hero-overlay {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  padding: 3rem;
+  transform: translate(-50%, -50%);
+  min-width: calc(50vw + 600px);
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #2c1810 0%, #5c3a28 100%);
-  padding: 1.25rem 2rem;
   text-align: center;
+  mask-image: linear-gradient(to right, transparent, black 300px, black calc(100% - 300px), transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 300px, black calc(100% - 300px), transparent);
 }
 
 .hero-content {
