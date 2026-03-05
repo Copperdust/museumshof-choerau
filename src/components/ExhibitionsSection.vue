@@ -61,12 +61,6 @@ const exhibitions = [
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .card-image {
@@ -78,11 +72,6 @@ const exhibitions = [
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s;
-}
-
-.card:hover .card-image img {
-  transform: scale(1.05);
 }
 
 h3 {

@@ -26,8 +26,6 @@ function closeLightbox() {
 <template>
   <section id="galerie">
     <div class="container">
-      <h2>Impressionen</h2>
-
       <div class="video-wrapper">
         <iframe
           width="800"
@@ -38,6 +36,9 @@ function closeLightbox() {
           title="Museumshof Chörau Video"
         ></iframe>
       </div>
+
+      <h2>Impressionen</h2>
+
 
       <div class="gallery-grid">
         <button
@@ -69,7 +70,7 @@ function closeLightbox() {
 
 .video-wrapper {
   max-width: 800px;
-  margin: 0 auto 2rem;
+  margin: 1.5rem auto 5rem;
   aspect-ratio: 16 / 9;
 }
 
