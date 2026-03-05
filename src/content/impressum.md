@@ -1,3 +1,5 @@
+## So finden Sie uns
+
 Museumshof Chörau e.V.<br>
 VR: 4631, Amtsgericht Stendal<br>
 USt.-ID: 116/143/08607

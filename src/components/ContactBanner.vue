@@ -84,7 +84,6 @@ onUnmounted(() => {
     <div class="contact-overlay">
       <div class="contact-cards">
         <div class="contact-card contact-info">
-          <h3>So finden Sie uns</h3>
           <div v-html="impressumHtml"></div>
         </div>
         <div class="contact-card contact-form-card">
@@ -154,12 +153,17 @@ onUnmounted(() => {
   flex: none;
 }
 
-.contact-card h3 {
+.contact-card :deep(h2) {
   font-size: 1.2rem;
   color: var(--section-heading);
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--section-heading-underline);
+  text-align: left;
+}
+
+.contact-card :deep(h2::after) {
+  display: none;
 }
 
 .contact-card :deep(p) {

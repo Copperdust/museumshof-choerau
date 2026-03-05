@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 
+const props = defineProps<{
+  logo?: string
+}>()
+
 const isOpen = ref(false)
 const scrolled = ref(false)
 
@@ -34,7 +38,7 @@ onUnmounted(() => {
   <nav :class="['navbar', { scrolled }]">
     <div class="nav-container">
       <a href="#start" class="logo">
-        <img src="/images/brand.jpg" alt="Museumshof Chörau" class="logo-img" />
+        <img :src="props.logo || '/images/brand.jpg'" alt="Museumshof Chörau" class="logo-img" />
       </a>
       <button class="hamburger" :class="{ active: isOpen }" @click="isOpen = !isOpen" aria-label="Menü">
         <span></span>

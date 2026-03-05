@@ -5,8 +5,10 @@ interface HeroImage {
   height: number
 }
 
-defineProps<{
+const props = defineProps<{
   images: HeroImage[]
+  title?: string
+  subtitle?: string
 }>()
 </script>
 
@@ -14,8 +16,8 @@ defineProps<{
   <ImageBanner :images="images" height="60vh" :parallax="false" id="start">
     <div class="hero-overlay">
       <div class="hero-content">
-        <h1>Museumshof Chörau</h1>
-        <p class="subtitle">Das Leben in den Jahren 1930 &ndash; 1989</p>
+        <h1>{{ props.title || 'Museumshof Chörau' }}</h1>
+        <p class="subtitle">{{ props.subtitle || 'Das Leben in den Jahren 1930 – 1989' }}</p>
       </div>
     </div>
   </ImageBanner>
