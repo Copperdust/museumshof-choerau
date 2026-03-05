@@ -3,10 +3,6 @@
     <div class="container">
       <h2>Öffnungszeiten</h2>
 
-      <div class="notice">
-        <p><strong>Wir haben Winterpause. Das Museum ist ab 05. April 2026 wieder geöffnet.</strong></p>
-      </div>
-
       <div class="hours-text">
         <p>Liebe Besucher,</p>
         <p>Unser Museumshof Chörau ist von April bis November zu folgenden Zeiten für Sie geöffnet:</p>
@@ -20,10 +16,6 @@
         <p>Des Weiteren besteht die Möglichkeit auf Terminvereinbarungen und individuellen Führungen durch unseren Museumshof.<br />Rufen Sie uns zur individuellen Terminvereinbarung doch einfach direkt an oder schreiben Sie uns eine E-Mail.</p>
       </div>
 
-      <div class="extras">
-        <p><strong>Sie möchten als Verein oder Firma unseren Museumshof als Eventlocation mieten? Kein Problem, gern unterbreiten wir Ihnen ein individuelles Angebot. Wenden Sie sich einfach per Mail unter <a href="mailto:museumshof-choerau@web.de">museumshof-choerau@web.de</a> oder via Telefon unter <a href="tel:+491638264397">0163-8264397</a> an uns. Wir freuen uns auf Sie.</strong></p>
-        <p><strong>Für alle e-Biker: Ladestation via Schukosteckdose.</strong></p>
-      </div>
     </div>
   </section>
 </template>
@@ -35,26 +27,12 @@
   padding: 0 1.5rem;
 }
 
-.notice {
-  text-align: center;
-  background: var(--notice-bg);
-  color: var(--notice-text);
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hours-text,
-.extras {
+.hours-text {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.hours-text p,
-.extras p {
+.hours-text p {
   margin-bottom: 0.75rem;
   text-align: justify;
   color: var(--body-text);
@@ -76,17 +54,4 @@ ul li {
   margin-bottom: 0.25rem;
 }
 
-.extras {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--section-border);
-}
-
-.extras a {
-  color: var(--hours-link);
-}
-
-.extras a:hover {
-  text-decoration: underline;
-}
 </style>
