@@ -17,7 +17,7 @@ import FooterSection from '../components/FooterSection.vue';
 
 // Site config
 const siteConfig = await import('../content/site.md');
-const { logo, heroTitle, heroSubtitle } = siteConfig.frontmatter;
+const { logo, heroTitle, heroSubtitle, youtubeVideo } = siteConfig.frontmatter;
 
 // Load events from markdown files in content/events/
 const eventFiles = import.meta.glob('../content/events/*.md', { eager: true });
@@ -52,7 +52,7 @@ const heroImageCandidates = Object.entries(imageModules)
   <NavBar client:load logo={logo} />
   <HeroSection client:only="vue" images={heroImageCandidates} title={heroTitle} subtitle={heroSubtitle} />
   <ExhibitionsSection />
-  <GallerySection client:visible />
+  <GallerySection client:visible youtubeVideo={youtubeVideo} />
   <AktuellesSection />
   <EventsSection client:visible events={events} />
   <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={30} imageSlant={-20} />

@@ -3,6 +3,10 @@ import { ref } from 'vue'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
 import 'vue3-carousel/carousel.css'
 
+const props = defineProps<{
+  youtubeVideo?: string
+}>()
+
 const images = [
   'IMG_0256', 'IMG_9869', 'IMG_0288', 'IMG_0254', 'IMG_0258', 'IMG_0243',
   'IMG_0244', 'IMG_0240', 'IMG_0248', 'IMG_0251', 'IMG_0233', 'IMG_0234',
@@ -44,7 +48,7 @@ function slideTo(index: number) {
         <iframe
           width="800"
           height="450"
-          src="https://www.youtube.com/embed/qlJWguweo4U"
+          :src="props.youtubeVideo || 'https://www.youtube.com/embed/qlJWguweo4U'"
           allowfullscreen
           loading="lazy"
           title="Museumshof Chörau Video"
