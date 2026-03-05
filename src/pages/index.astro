@@ -10,6 +10,7 @@ import HoursSection from '../components/HoursSection.vue';
 import DirectionsSection from '../components/DirectionsSection.vue';
 import ContactSection from '../components/ContactSection.vue';
 import DatenschutzSection from '../components/DatenschutzSection.vue';
+import AktuellesSection from '../components/AktuellesSection.astro';
 import FooterSection from '../components/FooterSection.vue';
 
 // Load events from markdown files in content/events/
@@ -46,8 +47,9 @@ const heroImageCandidates = Object.entries(imageModules)
   <HeroSection client:only="vue" images={heroImageCandidates} />
   <ExhibitionsSection />
   <GallerySection client:visible />
+  <AktuellesSection />
+  <EventsSection client:visible events={events} />
   <MuseumDescriptionSection />
-  <EventsSection events={events} />
   <HoursSection />
   <DirectionsSection />
   <ContactSection client:visible />

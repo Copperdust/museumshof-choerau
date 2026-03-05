@@ -27,8 +27,15 @@ function formatDate(dateStr: string): string {
   })
 }
 
+const now = new Date()
+const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+
 const sortedEvents = props.events
   .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+
+function isPast(dateStr: string): boolean {
+  return new Date(dateStr) < today
+}
 </script>
 
 <template>
@@ -36,7 +43,7 @@ const sortedEvents = props.events
     <div class="container">
       <h2>Termine & Veranstaltungen</h2>
       <div v-if="sortedEvents.length" class="events-grid">
-        <article v-for="event in sortedEvents" :key="event.title + event.date" class="event-row">
+        <article v-for="event in sortedEvents" :key="event.title + event.date" :class="['event-row', { past: isPast(event.date) }]">
           <div class="event-date">
             <span class="month">{{ new Date(event.date).toLocaleDateString('de-DE', { month: 'short' }) }}</span>
             <span class="day">{{ new Date(event.date).getDate() }}</span>
@@ -122,6 +129,11 @@ const sortedEvents = props.events
   line-height: 1.2;
 }
 
+
+.event-row.past {
+  opacity: 0.5;
+  filter: saturate(0);
+}
 
 .no-events {
   text-align: center;

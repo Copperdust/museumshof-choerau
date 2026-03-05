@@ -1,0 +1,62 @@
+---
+const file = await import('../content/aktuelles.md');
+const Content = file.default;
+---
+
+<section id="aktuelles" class="site-section">
+  <div class="container">
+    <h2>Aktuelles</h2>
+    <div class="aktuelles-text">
+      <Content />
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  #aktuelles .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  #aktuelles .aktuelles-text {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  #aktuelles .aktuelles-text p {
+    margin-bottom: 1rem;
+    color: var(--body-text);
+    line-height: 1.8;
+  }
+
+  #aktuelles .aktuelles-text a {
+    color: var(--body-link);
+  }
+
+  #aktuelles .aktuelles-text a:hover {
+    text-decoration: underline;
+  }
+
+  #aktuelles .aktuelles-text strong {
+    color: var(--section-heading);
+  }
+
+  #aktuelles .aktuelles-text h2 {
+    font-size: 1.6rem;
+    color: var(--body-text);
+    margin-bottom: 1rem;
+  }
+
+  #aktuelles .aktuelles-text h2::after {
+    display: none;
+  }
+
+  #aktuelles .aktuelles-text img {
+    display: inline-block;
+    max-width: 400px;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+</style>
