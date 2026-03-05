@@ -1,0 +1,10 @@
+---
+import ContactBanner from './ContactBanner.vue';
+const file = await import('../content/impressum.md');
+const { default: Content } = file;
+
+// Need to pass rendered HTML since Vue can't receive Astro components
+const htmlContent = await file.compiledContent();
+---
+
+<ContactBanner client:only="vue" impressumHtml={htmlContent} />

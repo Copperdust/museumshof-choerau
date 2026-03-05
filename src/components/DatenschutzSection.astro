@@ -1,0 +1,40 @@
+---
+const file = await import('../content/datenschutz.md');
+const Content = file.default;
+---
+
+<section id="datenschutz" class="site-section">
+  <div class="container">
+    <div class="datenschutz-text">
+      <Content />
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  #datenschutz .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  #datenschutz .datenschutz-text {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  #datenschutz .datenschutz-text p {
+    margin-bottom: 1rem;
+    color: var(--datenschutz-text);
+    line-height: 1.8;
+    font-size: 0.9rem;
+  }
+
+  #datenschutz .datenschutz-text a {
+    color: var(--datenschutz-link);
+  }
+
+  #datenschutz .datenschutz-text a:hover {
+    text-decoration: underline;
+  }
+</style>

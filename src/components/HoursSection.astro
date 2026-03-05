@@ -1,0 +1,47 @@
+---
+const file = await import('../content/oeffnungszeiten.md');
+const Content = file.default;
+---
+
+<section id="oeffnungszeiten" class="site-section">
+  <div class="container">
+    <div class="hours-text">
+      <Content />
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  #oeffnungszeiten .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  #oeffnungszeiten .hours-text {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  #oeffnungszeiten .hours-text p {
+    margin-bottom: 0.75rem;
+    text-align: justify;
+    color: var(--body-text);
+    line-height: 1.8;
+  }
+
+  #oeffnungszeiten .hours-text strong {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--hours-time);
+  }
+
+  #oeffnungszeiten .hours-text ul {
+    margin: 0 0 1rem 1.5rem;
+    color: var(--body-text);
+  }
+
+  #oeffnungszeiten .hours-text ul li {
+    margin-bottom: 0.25rem;
+  }
+</style>

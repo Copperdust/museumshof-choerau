@@ -4,13 +4,13 @@ import NavBar from '../components/NavBar.vue';
 import HeroSection from '../components/HeroSection.vue';
 import ExhibitionsSection from '../components/ExhibitionsSection.vue';
 import GallerySection from '../components/GallerySection.vue';
-import MuseumDescriptionSection1 from '../components/MuseumDescriptionSection1.vue';
-import MuseumDescriptionSection2 from '../components/MuseumDescriptionSection2.vue';
+import MuseumDescriptionSection1 from '../components/MuseumDescriptionSection1.astro';
+import MuseumDescriptionSection2 from '../components/MuseumDescriptionSection2.astro';
 import EventsSection from '../components/EventsSection.vue';
-import HoursSection from '../components/HoursSection.vue';
-import DirectionsSection from '../components/DirectionsSection.vue';
-import ContactSection from '../components/ContactSection.vue';
-import DatenschutzSection from '../components/DatenschutzSection.vue';
+import HoursSection from '../components/HoursSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+import MapSection from '../components/MapSection.astro';
+import DatenschutzSection from '../components/DatenschutzSection.astro';
 import AktuellesSection from '../components/AktuellesSection.astro';
 import ImageBanner from '../components/ImageBanner.vue';
 import FooterSection from '../components/FooterSection.vue';
@@ -57,11 +57,8 @@ const heroImageCandidates = Object.entries(imageModules)
   <MuseumDescriptionSection2 />
   <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={30} imageSlant={-20} />
   <HoursSection />
-  <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={-30} imageSlant={20} />
-  <DirectionsSection />
-  <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={30} imageSlant={-20} />
-  <ContactSection client:visible />
-  <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={-30} imageSlant={20} />
+  <ContactSection />
+  <MapSection />
   <DatenschutzSection />
   <FooterSection />
 </Layout>

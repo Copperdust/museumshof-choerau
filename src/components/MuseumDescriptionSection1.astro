@@ -1,0 +1,32 @@
+---
+const file = await import('../content/beschreibung-1.md');
+const Content = file.default;
+---
+
+<section id="beschreibung" class="site-section">
+  <div class="container">
+    <div class="description-text">
+      <Content />
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  #beschreibung .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  #beschreibung .description-text {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  #beschreibung .description-text p {
+    margin-bottom: 1rem;
+    text-align: justify;
+    color: var(--body-text);
+    line-height: 1.8;
+  }
+</style>
