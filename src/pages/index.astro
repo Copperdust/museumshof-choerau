@@ -21,11 +21,29 @@ const events = Object.values(eventFiles)
     date: file.frontmatter.date,
     description: file.frontmatter.description || '',
   }));
+
+// Collect all gallery + banner images with dimensions for hero
+// Astro's import.meta.glob with eager gives us image metadata at build time
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  ['/public/images/gallery/*.JPG', '/public/images/banners/*.jpg'],
+  { eager: true }
+);
+
+const MIN_WIDTH = 800;
+const MIN_HEIGHT = 600;
+
+const heroImageCandidates = Object.entries(imageModules)
+  .map(([path, mod]) => ({
+    src: path.replace('/public', ''),
+    width: mod.default.width,
+    height: mod.default.height,
+  }))
+  .filter((img) => img.width >= MIN_WIDTH && img.height >= MIN_HEIGHT);
 ---
 
 <Layout>
   <NavBar client:load />
-  <HeroSection />
+  <HeroSection client:load images={heroImageCandidates} />
   <ExhibitionsSection />
   <GallerySection client:visible />
   <MuseumDescriptionSection />

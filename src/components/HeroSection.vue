@@ -1,13 +1,78 @@
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+
+interface HeroImage {
+  src: string
+  width: number
+  height: number
+}
+
+const props = defineProps<{
+  images: HeroImage[]
+}>()
+
+function pickRandom(exclude: string[]): HeroImage {
+  const candidates = props.images.filter((img) => !exclude.includes(img.src))
+  return candidates[Math.floor(Math.random() * candidates.length)]
+}
+
+function pickInitial(): HeroImage[] {
+  const picked: HeroImage[] = []
+  for (let i = 0; i < 3; i++) {
+    picked.push(pickRandom(picked.map((p) => p.src)))
+  }
+  return picked
+}
+
+const heroImages = ref(pickInitial())
+const incoming = ref<{ slot: number; src: string } | null>(null)
+let currentSlot = 0
+let interval: ReturnType<typeof setInterval> | null = null
+
+const FADE_DURATION = 600
+const CYCLE_INTERVAL = 2000
+
+onMounted(() => {
+  interval = setInterval(() => {
+    const slot = currentSlot
+    const otherSrcs = heroImages.value
+      .filter((_, i) => i !== slot)
+      .map((img) => img.src)
+    const next = pickRandom(otherSrcs)
+
+    incoming.value = { slot, src: next.src }
+
+    setTimeout(() => {
+      heroImages.value[slot] = next
+      incoming.value = null
+    }, FADE_DURATION)
+
+    currentSlot = (currentSlot + 1) % 3
+  }, CYCLE_INTERVAL)
+})
+
+onUnmounted(() => {
+  if (interval) clearInterval(interval)
+})
+</script>
+
 <template>
   <section id="start" class="hero">
+    <div class="hero-images">
+      <div v-for="(img, i) in heroImages" :key="i" class="hero-image">
+        <img :src="img.src" alt="Museumshof Chörau" />
+        <img
+          v-if="incoming && incoming.slot === i"
+          :src="incoming.src"
+          class="incoming"
+          alt="Museumshof Chörau"
+        />
+      </div>
+    </div>
     <div class="hero-overlay">
       <div class="hero-content">
-        <h1>Museumshof Chorau</h1>
+        <h1>Museumshof Chörau</h1>
         <p class="subtitle">Das Leben in den Jahren 1930 &ndash; 1989</p>
-        <p class="description">
-          Ein liebevoll restaurierter Dreiseitenhof in Sachsen-Anhalt, der das
-          alltagliche Leben vergangener Jahrzehnte lebendig werden lasst.
-        </p>
         <a href="#ausstellungen" class="cta">Ausstellungen entdecken</a>
       </div>
     </div>
@@ -16,17 +81,51 @@
 
 <style scoped>
 .hero {
+  position: relative;
   min-height: 100vh;
-  background: linear-gradient(135deg, #2c1810 0%, #5c3a28 100%);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  flex-direction: column;
   color: #faf6f1;
 }
 
+.hero-images {
+  display: flex;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+}
+
+.hero-image {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-image img.incoming {
+  position: absolute;
+  inset: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .hero-overlay {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2c1810 0%, #5c3a28 100%);
   padding: 2rem;
+  text-align: center;
 }
 
 .hero-content {
@@ -47,13 +146,6 @@ h1 {
   font-style: italic;
 }
 
-.description {
-  font-size: 1.1rem;
-  color: rgba(250, 246, 241, 0.85);
-  margin-bottom: 2rem;
-  line-height: 1.7;
-}
-
 .cta {
   display: inline-block;
   padding: 0.85rem 2rem;
@@ -71,6 +163,15 @@ h1 {
 }
 
 @media (max-width: 768px) {
+  .hero-images {
+    flex-direction: column;
+    height: 50vh;
+  }
+
+  .hero-image {
+    height: 33.33%;
+  }
+
   h1 {
     font-size: 2rem;
   }
