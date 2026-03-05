@@ -67,13 +67,13 @@ function handleSubmit() {
 }
 
 .contact-info p {
-  color: #444;
+  color: var(--body-text);
   line-height: 1.8;
   margin-bottom: 1rem;
 }
 
 .contact-info a {
-  color: #8b4513;
+  color: var(--contact-link);
   text-decoration: none;
 }
 
@@ -83,14 +83,14 @@ function handleSubmit() {
 
 h3 {
   font-size: 1.2rem;
-  color: #2c1810;
+  color: var(--form-label);
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #d4a574;
+  border-bottom: 2px solid var(--form-heading-border);
 }
 
 .contact-form {
-  background: #fff;
+  background: var(--form-bg);
   border-radius: 8px;
   padding: 2rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
@@ -104,12 +104,12 @@ label {
   display: block;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #2c1810;
+  color: var(--form-label);
   margin-bottom: 0.25rem;
 }
 
 .mandatory {
-  color: #c00;
+  color: var(--form-required);
 }
 
 input,
@@ -126,12 +126,12 @@ textarea {
 input:focus,
 textarea:focus {
   outline: none;
-  border-color: #8b4513;
+  border-color: var(--form-focus-border);
 }
 
 .submit-btn {
-  background: #2c1810;
-  color: #faf6f1;
+  background: var(--form-btn-bg);
+  color: var(--form-btn-text);
   border: none;
   padding: 0.75rem 2rem;
   border-radius: 4px;
@@ -142,7 +142,7 @@ textarea:focus {
 }
 
 .submit-btn:hover {
-  background: #8b4513;
+  background: var(--form-btn-hover);
 }
 
 @media (max-width: 768px) {

@@ -73,7 +73,7 @@ const upcomingEvents = props.events
 .event-card {
   display: flex;
   gap: 1.5rem;
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
@@ -86,8 +86,8 @@ const upcomingEvents = props.events
   justify-content: center;
   min-width: 60px;
   padding: 0.5rem;
-  background: #2c1810;
-  color: #faf6f1;
+  background: var(--event-date-bg);
+  color: var(--event-date-text);
   border-radius: 6px;
 }
 
@@ -106,17 +106,17 @@ const upcomingEvents = props.events
 .event-info h3 {
   font-size: 1.1rem;
   margin-bottom: 0.25rem;
-  color: #2c1810;
+  color: var(--card-heading);
 }
 
 .event-info p {
-  color: #666;
+  color: var(--card-text);
   font-size: 0.95rem;
 }
 
 .no-events {
   text-align: center;
-  color: #666;
+  color: var(--card-text);
   font-style: italic;
 }
 </style>

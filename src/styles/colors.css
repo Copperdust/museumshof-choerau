@@ -1,0 +1,84 @@
+:root {
+  /* ===== Base palette ===== */
+  --color-gold: #ECB445;
+  --color-gold-light: #ffdfa1;
+  --color-maroon: #500500;
+  --color-brown: #5c3a28;
+  --color-tan: #d4a574;
+  --color-gray: #5c5c5c;
+  --color-white: #fff;
+  --color-black: #1a1a1a;
+  --color-red: #c00;
+
+  /* ===== Global / Body ===== */
+  --body-bg: var(--color-gold-light);
+  --body-text: #333;
+  --body-text-light: var(--color-gray);
+  --body-link: var(--color-brown);
+  --body-link-hover: var(--color-maroon);
+
+  /* ===== Section ===== */
+  --section-bg-alt: #f5e6c8;
+  --section-heading: var(--color-maroon);
+  --section-heading-underline: var(--color-gold);
+  --section-border: rgba(80, 5, 0, 0.1);
+
+  /* ===== Navbar ===== */
+  --nav-bg: rgba(236, 180, 69, 0.95);
+  --nav-bg-mobile: rgba(236, 180, 69, 0.98);
+  --nav-shadow: rgba(80, 5, 0, 0.15);
+  --nav-link: var(--color-maroon);
+  --nav-link-hover: var(--color-brown);
+  --nav-hamburger: var(--color-maroon);
+  --nav-border-mobile: rgba(80, 5, 0, 0.15);
+
+  /* ===== Hero ===== */
+  --hero-text: var(--color-gold-light);
+  --hero-subtitle: var(--color-gold);
+  --hero-overlay-from: var(--color-maroon);
+  --hero-overlay-to: var(--color-brown);
+
+  /* ===== Cards (exhibitions, events, etc.) ===== */
+  --card-bg: var(--color-white);
+  --card-heading: var(--color-maroon);
+  --card-text: var(--body-text-light);
+
+  /* ===== Gallery ===== */
+  --gallery-bg: var(--color-black);
+  --gallery-nav-bg: rgba(44, 24, 16, 0.6);
+  --gallery-nav-color: #faf6f1;
+  --gallery-thumb-border: var(--color-tan);
+
+  /* ===== Hours / Notice ===== */
+  --notice-bg: var(--color-tan);
+  --notice-text: var(--color-maroon);
+  --hours-time: var(--color-maroon);
+  --hours-link: var(--color-brown);
+
+  /* ===== Events ===== */
+  --event-date-bg: var(--color-maroon);
+  --event-date-text: var(--color-gold-light);
+
+  /* ===== Contact / Form ===== */
+  --form-bg: var(--color-white);
+  --form-heading-border: var(--color-tan);
+  --form-label: var(--color-maroon);
+  --form-focus-border: var(--color-brown);
+  --form-required: var(--color-red);
+  --form-btn-bg: var(--color-maroon);
+  --form-btn-text: var(--color-gold-light);
+  --form-btn-hover: var(--color-brown);
+  --contact-link: var(--color-brown);
+
+  /* ===== Directions ===== */
+  --directions-card-bg: var(--color-white);
+  --directions-heading-border: var(--color-tan);
+
+  /* ===== Datenschutz ===== */
+  --datenschutz-text: var(--body-text-light);
+  --datenschutz-link: var(--color-brown);
+
+  /* ===== Footer ===== */
+  --footer-bg: var(--color-maroon);
+  --footer-text: rgba(255, 223, 161, 0.7);
+}

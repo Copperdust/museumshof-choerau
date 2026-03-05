@@ -37,8 +37,8 @@
 
 .notice {
   text-align: center;
-  background: #d4a574;
-  color: #2c1810;
+  background: var(--notice-bg);
+  color: var(--notice-text);
   padding: 1rem 1.5rem;
   border-radius: 8px;
   margin-bottom: 2rem;
@@ -57,19 +57,19 @@
 .extras p {
   margin-bottom: 0.75rem;
   text-align: justify;
-  color: #444;
+  color: var(--body-text);
   line-height: 1.8;
 }
 
 .time {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #2c1810;
+  color: var(--hours-time);
 }
 
 ul {
   margin: 0 0 1rem 1.5rem;
-  color: #444;
+  color: var(--body-text);
 }
 
 ul li {
@@ -79,11 +79,11 @@ ul li {
 .extras {
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid #e8ddd0;
+  border-top: 1px solid var(--section-border);
 }
 
 .extras a {
-  color: #8b4513;
+  color: var(--hours-link);
 }
 
 .extras a:hover {

@@ -8,8 +8,8 @@
 
 <style scoped>
 .footer {
-  background: #2c1810;
-  color: rgba(250, 246, 241, 0.7);
+  background: var(--footer-bg);
+  color: var(--footer-text);
   text-align: center;
   padding: 1.5rem;
   font-size: 0.85rem;

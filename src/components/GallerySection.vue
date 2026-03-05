@@ -115,10 +115,10 @@ section {
 #gallery {
   border-radius: 8px;
   overflow: hidden;
-  background: #1a1a1a;
-  --vc-nav-background: rgba(44, 24, 16, 0.6);
+  background: var(--gallery-bg);
+  --vc-nav-background: var(--gallery-nav-bg);
   --vc-nav-border-radius: 50%;
-  --vc-nav-color: #faf6f1;
+  --vc-nav-color: var(--gallery-nav-color);
   --vc-nav-width: 48px;
   --vc-nav-height: 48px;
 }
@@ -145,7 +145,7 @@ section {
 
 .thumb.active {
   opacity: 1;
-  border-color: #d4a574;
+  border-color: var(--gallery-thumb-border);
 }
 
 .thumb:hover {

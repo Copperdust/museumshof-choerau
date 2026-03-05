@@ -40,7 +40,7 @@
 .description-text p {
   margin-bottom: 1rem;
   text-align: justify;
-  color: #444;
+  color: var(--body-text);
   line-height: 1.8;
 }
 </style>

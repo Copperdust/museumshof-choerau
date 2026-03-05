@@ -57,7 +57,7 @@ const exhibitions = [
 }
 
 .card {
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
@@ -76,7 +76,7 @@ const exhibitions = [
 
 h3 {
   font-size: 1.2rem;
-  color: #2c1810;
+  color: var(--card-heading);
   text-align: center;
   padding: 1rem;
 }

@@ -87,7 +87,7 @@ onUnmounted(() => {
   position: relative;
   display: flex;
   flex-direction: column;
-  color: #faf6f1;
+  color: var(--hero-text);
 }
 
 .hero-images {
@@ -130,7 +130,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #2c1810 0%, #5c3a28 100%);
+  background: linear-gradient(135deg, var(--hero-overlay-from) 0%, var(--hero-overlay-to) 100%);
   text-align: center;
   mask-image: linear-gradient(to right, transparent, black 300px, black calc(100% - 300px), transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 300px, black calc(100% - 300px), transparent);
@@ -142,14 +142,14 @@ onUnmounted(() => {
 
 h1 {
   font-size: 3rem;
-  color: #faf6f1;
+  color: var(--hero-text);
   margin-bottom: 0.5rem;
   letter-spacing: 0.02em;
 }
 
 .subtitle {
   font-size: 1.5rem;
-  color: #d4a574;
+  color: var(--hero-subtitle);
   font-style: italic;
 }
 

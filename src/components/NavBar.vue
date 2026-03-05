@@ -57,13 +57,13 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(250, 246, 241, 0.95);
+  background: var(--nav-bg);
   backdrop-filter: blur(10px);
   transition: box-shadow 0.3s;
 }
 
 .navbar.scrolled {
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 20px var(--nav-shadow);
 }
 
 .nav-container {
@@ -93,14 +93,14 @@ onUnmounted(() => {
 }
 
 .nav-links a {
-  color: #333;
+  color: var(--nav-link);
   text-decoration: none;
   font-size: 0.95rem;
   transition: color 0.2s;
 }
 
 .nav-links a:hover {
-  color: #8b4513;
+  color: var(--nav-link-hover);
 }
 
 .hamburger {
@@ -117,7 +117,7 @@ onUnmounted(() => {
   display: block;
   width: 24px;
   height: 2px;
-  background: #2c1810;
+  background: var(--nav-hamburger);
   transition: transform 0.3s, opacity 0.3s;
 }
 
@@ -143,7 +143,7 @@ onUnmounted(() => {
     top: 64px;
     left: 0;
     right: 0;
-    background: rgba(250, 246, 241, 0.98);
+    background: var(--nav-bg-mobile);
     flex-direction: column;
     padding: 1rem 1.5rem;
     gap: 0;
@@ -161,7 +161,7 @@ onUnmounted(() => {
 
   .nav-links li {
     padding: 0.75rem 0;
-    border-bottom: 1px solid #e8ddd0;
+    border-bottom: 1px solid var(--nav-border-mobile);
   }
 }
 </style>

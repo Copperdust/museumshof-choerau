@@ -43,7 +43,7 @@
 }
 
 .address-card {
-  background: #fff;
+  background: var(--directions-card-bg);
   border-radius: 8px;
   padding: 2rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
@@ -51,16 +51,16 @@
 
 h3 {
   font-size: 1.2rem;
-  color: #2c1810;
+  color: var(--section-heading);
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #d4a574;
+  border-bottom: 2px solid var(--directions-heading-border);
 }
 
 address {
   font-style: normal;
   line-height: 1.8;
-  color: #666;
+  color: var(--body-text-light);
 }
 
 .map-wrapper {

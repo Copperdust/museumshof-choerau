@@ -25,13 +25,13 @@
 
 .datenschutz-text p {
   margin-bottom: 1rem;
-  color: #666;
+  color: var(--datenschutz-text);
   line-height: 1.8;
   font-size: 0.9rem;
 }
 
 .datenschutz-text a {
-  color: #8b4513;
+  color: var(--datenschutz-link);
 }
 
 .datenschutz-text a:hover {
