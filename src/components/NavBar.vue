@@ -6,12 +6,11 @@ const scrolled = ref(false)
 
 const links = [
   { href: '#start', label: 'Start' },
-  { href: '#ausstellungen', label: 'Ausstellungen' },
+  { href: '#ausstellungen', label: 'Unsere Ausstellungsbereiche' },
   { href: '#galerie', label: 'Galerie' },
-  { href: '#termine', label: 'Termine' },
-  { href: '#oeffnungszeiten', label: 'Offnungszeiten' },
+  { href: '#oeffnungszeiten', label: 'Öffnungszeiten' },
   { href: '#anfahrt', label: 'Anfahrt' },
-  { href: '#kontakt', label: 'Kontakt' },
+  { href: '#kontakt', label: 'Kontakt/Impressum' },
 ]
 
 function onScroll() {
@@ -34,8 +33,10 @@ onUnmounted(() => {
 <template>
   <nav :class="['navbar', { scrolled }]">
     <div class="nav-container">
-      <a href="#start" class="logo" @click="closeMenu">Museumshof Chorau</a>
-      <button class="hamburger" :class="{ active: isOpen }" @click="isOpen = !isOpen" aria-label="Menu">
+      <a href="#start" class="logo">
+        <img src="/images/brand.jpg" alt="Museumshof Chörau" class="logo-img" />
+      </a>
+      <button class="hamburger" :class="{ active: isOpen }" @click="isOpen = !isOpen" aria-label="Menü">
         <span></span>
         <span></span>
         <span></span>
@@ -76,10 +77,13 @@ onUnmounted(() => {
 }
 
 .logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #2c1810;
-  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
 }
 
 .nav-links {

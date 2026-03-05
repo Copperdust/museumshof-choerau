@@ -2,33 +2,27 @@
 const exhibitions = [
   {
     title: 'Spielzeug',
-    description: 'Originale DDR-Spielzeuge aus verschiedenen Jahrzehnten.',
-    icon: '🧸',
+    image: '/images/exhibitions/spielzeug.jpg',
   },
   {
     title: 'Radio',
-    description: 'Radioempfanger von 1930 bis 1991 im Wandel der Zeit.',
-    icon: '📻',
+    image: '/images/exhibitions/radio.jpg',
   },
   {
     title: 'Fernseher',
-    description: 'Fernsehgerate aus der fruhen Geschichte des Fernsehens bis zur Wendezeit.',
-    icon: '📺',
+    image: '/images/exhibitions/fernseher.jpg',
   },
   {
-    title: 'Antennen & Kabeltechnik',
-    description: 'Ausstellung zur Antennen- und Kabelfernsehen-Technik.',
-    icon: '📡',
+    title: 'Antennen',
+    image: '/images/exhibitions/antenne.jpg',
   },
   {
     title: 'Wohnungen',
-    description: 'Zwei komplett eingerichtete Wohnungen aus den Jahren 1935-1970 sowie eine DDR-Wohnung von 1970.',
-    icon: '🏠',
+    image: '/images/exhibitions/wohnungen.jpg',
   },
   {
-    title: 'Aussenbereich',
-    description: 'Garage mit Trabant-Werkzeug, Waschkuche mit historischen Waschgeraten und mehr.',
-    icon: '🚗',
+    title: 'Außenbereich',
+    image: '/images/exhibitions/aussen.jpg',
   },
 ]
 </script>
@@ -37,15 +31,12 @@ const exhibitions = [
   <section id="ausstellungen">
     <div class="container">
       <h2>Unsere Ausstellungsbereiche</h2>
-      <p class="section-intro">
-        Der 2017-2018 umgebaute Dreiseitenhof beherbergt auf mehreren Etagen und in verschiedenen
-        Gebauden eine Vielzahl an Ausstellungsstucken aus der Zeit von 1930 bis 1989.
-      </p>
       <div class="grid">
         <div v-for="ex in exhibitions" :key="ex.title" class="card">
-          <span class="card-icon">{{ ex.icon }}</span>
+          <div class="card-image">
+            <img :src="ex.image" :alt="ex.title" loading="lazy" />
+          </div>
           <h3>{{ ex.title }}</h3>
-          <p>{{ ex.description }}</p>
         </div>
       </div>
     </div>
@@ -59,13 +50,6 @@ const exhibitions = [
   padding: 0 1.5rem;
 }
 
-.section-intro {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 2.5rem;
-  color: #666;
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -75,7 +59,7 @@ const exhibitions = [
 .card {
   background: #fff;
   border-radius: 8px;
-  padding: 2rem;
+  overflow: hidden;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -85,20 +69,26 @@ const exhibitions = [
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-.card-icon {
-  font-size: 2.5rem;
-  display: block;
-  margin-bottom: 1rem;
+.card-image {
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.card:hover .card-image img {
+  transform: scale(1.05);
 }
 
 h3 {
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
   color: #2c1810;
-}
-
-p {
-  color: #666;
-  font-size: 0.95rem;
+  text-align: center;
+  padding: 1rem;
 }
 </style>

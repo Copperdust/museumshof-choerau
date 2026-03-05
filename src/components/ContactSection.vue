@@ -7,57 +7,46 @@ const form = ref({
   message: '',
 })
 
-const submitted = ref(false)
-
 function handleSubmit() {
-  // Build a mailto link as a simple no-backend solution
   const mailto = `mailto:museumshof-choerau@web.de?subject=${encodeURIComponent(form.value.subject)}&body=${encodeURIComponent(form.value.message + '\n\nVon: ' + form.value.email)}`
   window.location.href = mailto
-  submitted.value = true
 }
 </script>
 
 <template>
   <section id="kontakt">
     <div class="container">
-      <h2>Kontakt</h2>
+      <h2>Kontakt/Impressum:</h2>
       <div class="contact-grid">
         <div class="contact-info">
-          <h3>Museumshof Chorau e.V.</h3>
-          <dl>
-            <dt>Vorsitzender</dt>
-            <dd>David Kuhn</dd>
-            <dt>Adresse</dt>
-            <dd>Dorfstr. 6, OT Chorau<br />06386 Osternienburger Land</dd>
-            <dt>Telefon</dt>
-            <dd><a href="tel:+4934909709905">034909-709905</a></dd>
-            <dt>Mobil</dt>
-            <dd><a href="tel:+491638264397">0163-8264397</a></dd>
-            <dt>E-Mail</dt>
-            <dd><a href="mailto:museumshof-choerau@web.de">museumshof-choerau@web.de</a></dd>
-          </dl>
+          <p>Museumshof Chörau e.V.<br />
+          VR: 4631, Amtsgericht Stendal<br />
+          USt.-ID: 116/143/08607</p>
 
-          <div class="legal">
-            <p>Vereinsregister: VR 4631, Amtsgericht Stendal</p>
-            <p>Steuer-Nr.: 116/143/08607</p>
-          </div>
+          <p>Torsten Winger<br />
+          Dorfstr. 6<br />
+          OT Chörau<br />
+          06386 Osternienburger Land<br />
+          Tel.: <a href="tel:+4934909709905">034909-709905</a><br />
+          Funk: <a href="tel:+491638264397">0163-8264397</a><br />
+          E-Mail: <a href="mailto:museumshof-choerau@web.de">Museumshof-Choerau [at] web.de</a></p>
         </div>
 
         <form class="contact-form" @submit.prevent="handleSubmit">
-          <h3>Nachricht senden</h3>
+          <h3>Kontaktformular</h3>
           <div class="form-group">
-            <label for="email">E-Mail-Adresse</label>
+            <label for="email">Ihre E-Mail-Adresse: <span class="mandatory">*</span></label>
             <input id="email" v-model="form.email" type="email" required />
           </div>
           <div class="form-group">
-            <label for="subject">Betreff</label>
+            <label for="subject">Grund der Kontaktaufnahme <span class="mandatory">*</span></label>
             <input id="subject" v-model="form.subject" type="text" required />
           </div>
           <div class="form-group">
-            <label for="message">Nachricht</label>
-            <textarea id="message" v-model="form.message" rows="5" required></textarea>
+            <label for="message">Ihre Bemerkung: <span class="mandatory">*</span></label>
+            <textarea id="message" v-model="form.message" rows="4" cols="40" required></textarea>
           </div>
-          <button type="submit" class="submit-btn">Absenden</button>
+          <button type="submit" class="submit-btn">Kontaktanfrage senden</button>
         </form>
       </div>
     </div>
@@ -77,47 +66,27 @@ function handleSubmit() {
   gap: 2rem;
 }
 
+.contact-info p {
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.contact-info a {
+  color: #8b4513;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
 h3 {
   font-size: 1.2rem;
   color: #2c1810;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid #d4a574;
-}
-
-dl {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.5rem 1rem;
-}
-
-dt {
-  font-weight: 600;
-  color: #2c1810;
-}
-
-dd {
-  color: #666;
-}
-
-dd a {
-  color: #8b4513;
-  text-decoration: none;
-}
-
-dd a:hover {
-  text-decoration: underline;
-}
-
-.legal {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid #e8ddd0;
-}
-
-.legal p {
-  font-size: 0.85rem;
-  color: #999;
 }
 
 .contact-form {
@@ -137,6 +106,10 @@ label {
   font-weight: 600;
   color: #2c1810;
   margin-bottom: 0.25rem;
+}
+
+.mandatory {
+  color: #c00;
 }
 
 input,

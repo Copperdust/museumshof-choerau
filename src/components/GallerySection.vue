@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-// Placeholder images - replace with actual museum photos
 const images = [
-  { src: '/images/gallery-1.jpg', alt: 'Eroffnungsfeier des Museumshofs' },
-  { src: '/images/gallery-2.jpg', alt: 'Spielzeugausstellung' },
-  { src: '/images/gallery-3.jpg', alt: 'Historische Radios' },
-  { src: '/images/gallery-4.jpg', alt: 'Eingerichtete Wohnung' },
-  { src: '/images/gallery-5.jpg', alt: 'Aussenbereich des Museumshofs' },
-  { src: '/images/gallery-6.jpg', alt: 'Fernsehausstellung' },
-]
+  'IMG_0256', 'IMG_9869', 'IMG_0288', 'IMG_0254', 'IMG_0258', 'IMG_0243',
+  'IMG_0244', 'IMG_0240', 'IMG_0248', 'IMG_0251', 'IMG_0233', 'IMG_0234',
+  'IMG_0239', 'IMG_0253', 'IMG_0263', 'IMG_0267', 'IMG_0268', 'IMG_0270',
+  'IMG_0271', 'IMG_0273', 'IMG_0274', 'IMG_0275', 'IMG_0281', 'IMG_0287',
+  'IMG_9864', 'IMG_9865',
+].map((name) => ({
+  src: `/images/gallery/${name}.JPG`,
+  alt: `Museumshof Chörau - ${name}`,
+}))
 
 const lightboxImage = ref<{ src: string; alt: string } | null>(null)
 
@@ -25,7 +26,19 @@ function closeLightbox() {
 <template>
   <section id="galerie">
     <div class="container">
-      <h2>Galerie</h2>
+      <h2>Impressionen</h2>
+
+      <div class="video-wrapper">
+        <iframe
+          width="800"
+          height="450"
+          src="https://www.youtube.com/embed/qlJWguweo4U"
+          allowfullscreen
+          loading="lazy"
+          title="Museumshof Chörau Video"
+        ></iframe>
+      </div>
+
       <div class="gallery-grid">
         <button
           v-for="image in images"
@@ -40,7 +53,7 @@ function closeLightbox() {
 
     <Teleport to="body">
       <div v-if="lightboxImage" class="lightbox" @click="closeLightbox">
-        <button class="lightbox-close" @click="closeLightbox" aria-label="Schliessen">&times;</button>
+        <button class="lightbox-close" @click="closeLightbox" aria-label="Schließen">&times;</button>
         <img :src="lightboxImage.src" :alt="lightboxImage.alt" />
       </div>
     </Teleport>
@@ -52,6 +65,19 @@ function closeLightbox() {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
+}
+
+.video-wrapper {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  aspect-ratio: 16 / 9;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 8px;
 }
 
 .gallery-grid {

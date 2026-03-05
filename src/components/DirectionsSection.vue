@@ -1,7 +1,7 @@
 <template>
   <section id="anfahrt">
     <div class="container">
-      <h2>So erreichen Sie uns</h2>
+      <h2>So erreichen Sie uns!</h2>
       <div class="directions-content">
         <div class="address-card">
           <h3>Adresse</h3>
@@ -13,7 +13,7 @@
         </div>
         <div class="map-wrapper">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2462.5!2d12.05!3d51.78!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a66d0000000001%3A0x1!2sMuseumshof+Ch%C3%B6rau!5e0!3m2!1sde!2sde!4v1"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2462.5!2d12.1142198!3d51.8154579!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a66d0000000001%3A0x1!2sMuseumshof+Ch%C3%B6rau!5e0!3m2!1sde!2sde!4v1"
             width="100%"
             height="400"
             style="border:0"
