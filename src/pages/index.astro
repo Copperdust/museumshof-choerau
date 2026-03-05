@@ -4,13 +4,15 @@ import NavBar from '../components/NavBar.vue';
 import HeroSection from '../components/HeroSection.vue';
 import ExhibitionsSection from '../components/ExhibitionsSection.vue';
 import GallerySection from '../components/GallerySection.vue';
-import MuseumDescriptionSection from '../components/MuseumDescriptionSection.vue';
+import MuseumDescriptionSection1 from '../components/MuseumDescriptionSection1.vue';
+import MuseumDescriptionSection2 from '../components/MuseumDescriptionSection2.vue';
 import EventsSection from '../components/EventsSection.vue';
 import HoursSection from '../components/HoursSection.vue';
 import DirectionsSection from '../components/DirectionsSection.vue';
 import ContactSection from '../components/ContactSection.vue';
 import DatenschutzSection from '../components/DatenschutzSection.vue';
 import AktuellesSection from '../components/AktuellesSection.astro';
+import ImageBanner from '../components/ImageBanner.vue';
 import FooterSection from '../components/FooterSection.vue';
 
 // Load events from markdown files in content/events/
@@ -26,7 +28,7 @@ const events = Object.values(eventFiles)
 // Collect all gallery + banner images with dimensions for hero
 // Astro's import.meta.glob with eager gives us image metadata at build time
 const imageModules = import.meta.glob<{ default: ImageMetadata }>(
-  ['/public/images/gallery/*.JPG', '/public/images/banners/*.jpg'],
+  '/public/images/gallery/*.JPG',
   { eager: true }
 );
 
@@ -49,10 +51,17 @@ const heroImageCandidates = Object.entries(imageModules)
   <GallerySection client:visible />
   <AktuellesSection />
   <EventsSection client:visible events={events} />
-  <MuseumDescriptionSection />
+  <ImageBanner client:visible images={heroImageCandidates} height="25vh" />
+  <MuseumDescriptionSection1 />
+  <ImageBanner client:visible images={heroImageCandidates} height="25vh" />
+  <MuseumDescriptionSection2 />
+  <ImageBanner client:visible images={heroImageCandidates} height="25vh" />
   <HoursSection />
+  <ImageBanner client:visible images={heroImageCandidates} height="25vh" />
   <DirectionsSection />
+  <ImageBanner client:visible images={heroImageCandidates} height="25vh" />
   <ContactSection client:visible />
+  <ImageBanner client:visible images={heroImageCandidates} height="25vh" />
   <DatenschutzSection />
   <FooterSection />
 </Layout>
