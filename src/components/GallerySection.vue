@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { Carousel, Slide, Navigation } from 'vue3-carousel'
+import 'vue3-carousel/carousel.css'
 
 const images = [
   'IMG_0256', 'IMG_9869', 'IMG_0288', 'IMG_0254', 'IMG_0258', 'IMG_0243',
@@ -12,14 +14,26 @@ const images = [
   alt: `Museumshof Chörau - ${name}`,
 }))
 
-const lightboxImage = ref<{ src: string; alt: string } | null>(null)
+const currentSlide = ref(0)
 
-function openLightbox(image: { src: string; alt: string }) {
-  lightboxImage.value = image
+const galleryConfig = {
+  itemsToShow: 1,
+  wrapAround: true,
+  slideEffect: 'fade',
+  mouseDrag: false,
+  touchDrag: true,
 }
 
-function closeLightbox() {
-  lightboxImage.value = null
+const thumbConfig = {
+  itemsToShow: 6,
+  wrapAround: true,
+  gap: 10,
+  mouseDrag: true,
+  touchDrag: true,
+}
+
+function slideTo(index: number) {
+  currentSlide.value = index
 }
 </script>
 
@@ -39,29 +53,41 @@ function closeLightbox() {
 
       <h2>Impressionen</h2>
 
+      <div class="gallery">
+        <Carousel id="gallery" v-bind="galleryConfig" v-model="currentSlide">
+          <Slide v-for="(image, i) in images" :key="i">
+            <img :src="image.src" :alt="image.alt" class="gallery-img" />
+          </Slide>
+          <template #addons>
+            <Navigation />
+          </template>
+        </Carousel>
 
-      <div class="gallery-grid">
-        <button
-          v-for="image in images"
-          :key="image.src"
-          class="gallery-item"
-          @click="openLightbox(image)"
+        <Carousel
+          id="thumbnails"
+          v-bind="thumbConfig"
+          v-model="currentSlide"
+          ref="thumbCarousel"
         >
-          <img :src="image.src" :alt="image.alt" loading="lazy" />
-        </button>
+          <Slide v-for="(image, i) in images" :key="i">
+            <div
+              :class="['thumb', { active: currentSlide === i }]"
+              @click="slideTo(i)"
+            >
+              <img :src="image.src" :alt="image.alt" loading="lazy" />
+            </div>
+          </Slide>
+        </Carousel>
       </div>
     </div>
-
-    <Teleport to="body">
-      <div v-if="lightboxImage" class="lightbox" @click="closeLightbox">
-        <button class="lightbox-close" @click="closeLightbox" aria-label="Schließen">&times;</button>
-        <img :src="lightboxImage.src" :alt="lightboxImage.alt" />
-      </div>
-    </Teleport>
   </section>
 </template>
 
 <style scoped>
+section {
+  padding: 0;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -81,60 +107,71 @@ function closeLightbox() {
   border-radius: 8px;
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
+.gallery {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.gallery-item {
-  border: none;
-  padding: 0;
-  background: none;
-  cursor: pointer;
-  overflow: hidden;
+#gallery {
   border-radius: 8px;
-  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #1a1a1a;
+  --vc-nav-background: rgba(44, 24, 16, 0.6);
+  --vc-nav-border-radius: 50%;
+  --vc-nav-color: #faf6f1;
+  --vc-nav-width: 48px;
+  --vc-nav-height: 48px;
 }
 
-.gallery-item img {
+.gallery-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.05);
-}
-
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  padding: 2rem;
-}
-
-.lightbox img {
-  max-width: 90vw;
-  max-height: 90vh;
+  aspect-ratio: 4 / 3;
   object-fit: contain;
-  border-radius: 4px;
 }
 
-.lightbox-close {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 2.5rem;
+#thumbnails {
+  margin-top: 0.75rem;
+}
+
+.thumb {
+  padding: 2px;
   cursor: pointer;
-  line-height: 1;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.thumb.active {
+  opacity: 1;
+  border-color: #d4a574;
+}
+
+.thumb:hover {
+  opacity: 0.85;
+}
+
+.thumb img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+}
+
+#gallery :deep(.carousel__prev) {
+  left: 10px;
+}
+
+#gallery :deep(.carousel__next) {
+  right: 10px;
+}
+
+@media (max-width: 768px) {
+  #gallery {
+    --vc-nav-width: 36px;
+    --vc-nav-height: 36px;
+  }
 }
 </style>

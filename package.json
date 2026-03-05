@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/vue": "^5.1.4",
     "astro": "^5.17.1",
-    "vue": "^3.5.29"
+    "vue": "^3.5.29",
+    "vue3-carousel": "^0.17.0"
   }
 }
