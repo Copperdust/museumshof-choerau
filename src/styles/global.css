@@ -41,11 +41,11 @@ a:hover {
   padding: 0 1.5rem;
 }
 
-section {
+.site-section {
   padding: 4rem 0;
 }
 
-section:nth-child(even) {
+.site-section:nth-child(even) {
   background-color: var(--section-bg-alt);
 }
 

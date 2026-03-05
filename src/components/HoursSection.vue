@@ -1,5 +1,5 @@
 <template>
-  <section id="oeffnungszeiten">
+  <section id="oeffnungszeiten" class="site-section">
     <div class="container">
       <h2>Öffnungszeiten</h2>
 

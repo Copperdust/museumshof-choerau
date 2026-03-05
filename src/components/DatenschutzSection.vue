@@ -1,5 +1,5 @@
 <template>
-  <section id="datenschutz">
+  <section id="datenschutz" class="site-section">
     <div class="container">
       <h2>Datenschutzerklärung</h2>
       <div class="datenschutz-text">

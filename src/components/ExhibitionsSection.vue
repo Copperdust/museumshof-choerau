@@ -28,7 +28,7 @@ const exhibitions = [
 </script>
 
 <template>
-  <section id="ausstellungen">
+  <section id="ausstellungen" class="site-section">
     <div class="container">
       <h2>Unsere Ausstellungsbereiche</h2>
       <div class="grid">

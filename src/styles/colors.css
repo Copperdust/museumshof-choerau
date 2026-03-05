@@ -9,16 +9,18 @@
   --color-white: #fff;
   --color-black: #1a1a1a;
   --color-red: #c00;
+  --color-cream: #fdf8f0;
+  --color-cream-dark: #f5ead6;
 
   /* ===== Global / Body ===== */
-  --body-bg: var(--color-gold-light);
+  --body-bg: var(--color-cream);
   --body-text: #333;
   --body-text-light: var(--color-gray);
   --body-link: var(--color-brown);
   --body-link-hover: var(--color-maroon);
 
   /* ===== Section ===== */
-  --section-bg-alt: #f5e6c8;
+  --section-bg-alt: var(--color-cream-dark);
   --section-heading: var(--color-maroon);
   --section-heading-underline: var(--color-gold);
   --section-border: rgba(80, 5, 0, 0.1);

@@ -1,5 +1,5 @@
 <template>
-  <section id="anfahrt">
+  <section id="anfahrt" class="site-section">
     <div class="container">
       <h2>So erreichen Sie uns!</h2>
       <div class="directions-content">

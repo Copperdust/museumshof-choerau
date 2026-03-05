@@ -38,7 +38,7 @@ function slideTo(index: number) {
 </script>
 
 <template>
-  <section id="galerie">
+  <section id="galerie" class="site-section">
     <div class="container">
       <div class="video-wrapper">
         <iframe
@@ -84,10 +84,6 @@ function slideTo(index: number) {
 </template>
 
 <style scoped>
-section {
-  padding: 0;
-}
-
 .container {
   max-width: 1200px;
   margin: 0 auto;

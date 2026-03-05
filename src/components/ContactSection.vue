@@ -14,7 +14,7 @@ function handleSubmit() {
 </script>
 
 <template>
-  <section id="kontakt">
+  <section id="kontakt" class="site-section">
     <div class="container">
       <h2>Kontakt/Impressum:</h2>
       <div class="contact-grid">

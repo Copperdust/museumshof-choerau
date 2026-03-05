@@ -27,17 +27,16 @@ function formatDate(dateStr: string): string {
   })
 }
 
-const upcomingEvents = props.events
-  .filter((e) => new Date(e.date) >= new Date())
+const sortedEvents = props.events
   .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
 </script>
 
 <template>
-  <section id="termine">
+  <section id="termine" class="site-section">
     <div class="container">
       <h2>Termine & Veranstaltungen</h2>
-      <div v-if="upcomingEvents.length" class="events-list">
-        <article v-for="event in upcomingEvents" :key="event.title + event.date" class="event-card">
+      <div v-if="sortedEvents.length" class="events-list">
+        <article v-for="event in sortedEvents" :key="event.title + event.date" class="event-card">
           <div class="event-date">
             <span class="day">{{ new Date(event.date).getDate() }}</span>
             <span class="month">{{ new Date(event.date).toLocaleDateString('de-DE', { month: 'short' }) }}</span>

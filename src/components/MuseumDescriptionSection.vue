@@ -1,5 +1,5 @@
 <template>
-  <section id="beschreibung">
+  <section id="beschreibung" class="site-section">
     <div class="container">
       <h2>Der Museumshof Chörau</h2>
       <div class="description-text">
@@ -13,7 +13,7 @@
     </div>
   </section>
 
-  <section id="beschreibung-2" class="with-image">
+  <section id="beschreibung-2" class="site-section with-image">
     <div class="container">
       <div class="description-text">
         <p>In unserer umgebauten Scheune befindet sich unsere kleine Gaststube, wo unsere Mitglieder Ihnen Kaffee und Kuchen, Getränke und Eis reichen. Angeschlossen daran ist der große Rittersaal, in dem unsere Wohnzimmerkonzerte, Vorträge und andere Veranstaltungen stattfinden. Von dort abgehend kommen Sie in unser Radio- und Fernsehmuseum, welches Ausstellungsstücke aus der Vorkriegs-, Nachkriegs- und DDR-Produktion von 1930 bis 1989 sowie aus der "Nachwendeproduktion" bis 1991 zeigt. Sicher finden Sie hier auch das ein oder andere Ausstellungsstück was Sie selbst einmal besaßen. Viele unserer Geräte funktionieren nach wie vor und können gern live vorgeführt werden.</p>
