@@ -43,7 +43,7 @@ const heroImageCandidates = Object.entries(imageModules)
 
 <Layout>
   <NavBar client:load />
-  <HeroSection client:load images={heroImageCandidates} />
+  <HeroSection client:only="vue" images={heroImageCandidates} />
   <ExhibitionsSection />
   <GallerySection client:visible />
   <MuseumDescriptionSection />

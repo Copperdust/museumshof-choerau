@@ -25,20 +25,19 @@ function pickInitial(): HeroImage[] {
 }
 
 const heroImages = ref(pickInitial())
+const recentSrcs: string[] = heroImages.value.map((img) => img.src)
 const incoming = ref<{ slot: number; src: string } | null>(null)
 let currentSlot = 0
-let interval: ReturnType<typeof setInterval> | null = null
+let interval: ReturnType<typeof setTimeout> | null = null
 
-const FADE_DURATION = 600
-const CYCLE_INTERVAL = 2000
+const FADE_DURATION = 2000
 
-onMounted(() => {
-  interval = setInterval(() => {
+function scheduleNext() {
+  interval = setTimeout(() => {
     const slot = currentSlot
-    const otherSrcs = heroImages.value
-      .filter((_, i) => i !== slot)
-      .map((img) => img.src)
-    const next = pickRandom(otherSrcs)
+    const next = pickRandom(recentSrcs)
+    recentSrcs.push(next.src)
+    if (recentSrcs.length > 6) recentSrcs.shift()
 
     incoming.value = { slot, src: next.src }
 
@@ -48,11 +47,16 @@ onMounted(() => {
     }, FADE_DURATION)
 
     currentSlot = (currentSlot + 1) % 3
-  }, CYCLE_INTERVAL)
+    scheduleNext()
+  }, 4000)
+}
+
+onMounted(() => {
+  scheduleNext()
 })
 
 onUnmounted(() => {
-  if (interval) clearInterval(interval)
+  if (interval) clearTimeout(interval)
 })
 </script>
 
@@ -73,7 +77,6 @@ onUnmounted(() => {
       <div class="hero-content">
         <h1>Museumshof Chörau</h1>
         <p class="subtitle">Das Leben in den Jahren 1930 &ndash; 1989</p>
-        <a href="#ausstellungen" class="cta">Ausstellungen entdecken</a>
       </div>
     </div>
   </section>
@@ -110,7 +113,7 @@ onUnmounted(() => {
 .hero-image img.incoming {
   position: absolute;
   inset: 0;
-  animation: fadeIn 0.6s ease forwards;
+  animation: fadeIn 2s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -119,12 +122,11 @@ onUnmounted(() => {
 }
 
 .hero-overlay {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #2c1810 0%, #5c3a28 100%);
-  padding: 2rem;
+  padding: 1.25rem 2rem;
   text-align: center;
 }
 
@@ -142,24 +144,7 @@ h1 {
 .subtitle {
   font-size: 1.5rem;
   color: #d4a574;
-  margin-bottom: 1.5rem;
   font-style: italic;
-}
-
-.cta {
-  display: inline-block;
-  padding: 0.85rem 2rem;
-  background: #d4a574;
-  color: #2c1810;
-  border-radius: 4px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.2s;
-}
-
-.cta:hover {
-  background: #c49464;
-  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
