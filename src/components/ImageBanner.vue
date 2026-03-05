@@ -123,7 +123,20 @@ function imageClip(index: number): Record<string, string> {
   return style
 }
 
+// Shadow rotation to match slant angle
+const shadowAngle = ref(0)
+
+function updateShadowAngle() {
+  if (!banner.value) return
+  const slant = Number(props.slant)
+  if (!slant) return
+  const width = banner.value.offsetWidth
+  shadowAngle.value = Math.atan2(-slant, width) * (180 / Math.PI)
+}
+
 onMounted(() => {
+  updateShadowAngle()
+  window.addEventListener('resize', updateShadowAngle, { passive: true })
   scheduleNext()
   if (props.parallax) {
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -134,6 +147,7 @@ onMounted(() => {
 onUnmounted(() => {
   if (interval) clearTimeout(interval)
   if (props.parallax) window.removeEventListener('scroll', onScroll)
+  window.removeEventListener('resize', updateShadowAngle)
 })
 </script>
 
@@ -150,6 +164,7 @@ onUnmounted(() => {
         />
       </div>
     </div>
+    <div class="banner-shadow" :style="{ transform: `rotate(${shadowAngle}deg) scale(1.1)` }"></div>
     <slot />
   </div>
 </template>
@@ -189,6 +204,14 @@ onUnmounted(() => {
   position: absolute;
   inset: 0;
   animation: fadeIn 2s ease forwards;
+}
+
+.banner-shadow {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 -20px 40px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 1;
 }
 
 @keyframes fadeIn {

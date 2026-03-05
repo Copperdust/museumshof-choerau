@@ -58,11 +58,7 @@ onUnmounted(() => {
   right: 0;
   z-index: 1000;
   background: var(--nav-bg);
-  transition: box-shadow 0.3s;
-}
-
-.navbar.scrolled {
-  box-shadow: 0 2px 20px var(--nav-shadow);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .nav-container {

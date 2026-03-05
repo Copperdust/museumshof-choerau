@@ -51,17 +51,17 @@ const heroImageCandidates = Object.entries(imageModules)
   <GallerySection client:visible />
   <AktuellesSection />
   <EventsSection client:visible events={events} />
-  <ImageBanner client:visible images={heroImageCandidates} height="25vh" slant={30} imageSlant={-20} />
+  <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={30} imageSlant={-20} />
   <MuseumDescriptionSection1 />
-  <ImageBanner client:visible images={heroImageCandidates} height="25vh" slant={-30} imageSlant={20} />
+  <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={-30} imageSlant={20} />
   <MuseumDescriptionSection2 />
-  <ImageBanner client:visible images={heroImageCandidates} height="25vh" slant={30} imageSlant={-20} />
+  <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={30} imageSlant={-20} />
   <HoursSection />
-  <ImageBanner client:visible images={heroImageCandidates} height="25vh" slant={-30} imageSlant={20} />
+  <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={-30} imageSlant={20} />
   <DirectionsSection />
-  <ImageBanner client:visible images={heroImageCandidates} height="25vh" slant={30} imageSlant={-20} />
+  <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={30} imageSlant={-20} />
   <ContactSection client:visible />
-  <ImageBanner client:visible images={heroImageCandidates} height="25vh" slant={-30} imageSlant={20} />
+  <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={-30} imageSlant={20} />
   <DatenschutzSection />
   <FooterSection />
 </Layout>

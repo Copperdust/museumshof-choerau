@@ -156,6 +156,7 @@ function isPast(dateStr: string): boolean {
   max-width: 800px;
   border-radius: 8px;
   border: 0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .event-row.past {
