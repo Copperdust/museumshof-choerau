@@ -54,7 +54,8 @@ onUnmounted(() => {
   </nav>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use '../styles/fluid' as *;
 .navbar {
   position: fixed;
   top: 0;
@@ -81,7 +82,7 @@ onUnmounted(() => {
 }
 
 .logo-img {
-  width: var(--size-logo);
+  @include fluid-prop(width, 150px, 150px, 200px, 200px);
   height: auto;
   max-height: 40px;
 }
@@ -101,7 +102,7 @@ onUnmounted(() => {
   transition: color 0.2s;
   display: flex;
   align-items: center;
-  padding: 0 var(--spacing-nav-link);
+  @include fluid-prop(padding-inline, 0.4rem, 0.5rem, 0.75rem, 0.75rem);
   height: 100%;
 }
 

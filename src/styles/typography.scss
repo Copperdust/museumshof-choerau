@@ -3,8 +3,8 @@
 /*
  * Typography Scale
  *
- * Breakpoints: 320px → 768px → 1280px → 1440px
- * Values: mobile → tablet → desktop → large desktop
+ * Breakpoints: 320px → 768px → 1024px → 1440px
+ * Values: mobile → tablet → small desktop → large desktop
  */
 
 :root {
@@ -33,7 +33,4 @@
   @include fluid-prop(--font-event-year, 0.5rem, 0.525rem, 0.55rem, 0.6rem);
   @include fluid-prop(--font-event-title, 0.85rem, 0.875rem, 0.9rem, 0.95rem);
 
-  /* Sizing */
-  @include fluid-prop(--size-logo, 150px, 150px, 150px, 200px);
-  @include fluid-prop(--spacing-nav-link, 0.4rem, 0.5rem, 0.65rem, 0.75rem);
 }
