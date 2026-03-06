@@ -12,30 +12,54 @@ const exhibitions = Object.values(exhibitionFiles)
 <section id="ausstellungen" class="site-section">
   <div class="container">
     <h2>Unsere Ausstellungsbereiche</h2>
+    <div class="grid-wrapper">
     <div class="grid">
       {exhibitions.map((ex) => (
-        <div class="card">
-          <div class="card-image">
-            <img src={ex.image} alt={ex.title} loading="lazy" />
+        <div class="card-wrapper">
+          <div class="card">
+            <div class="card-image">
+              <img src={ex.image} alt={ex.title} loading="lazy" />
+            </div>
+            <h3>{ex.title}</h3>
           </div>
-          <h3>{ex.title}</h3>
         </div>
       ))}
+    </div>
     </div>
   </div>
 </section>
 
-<style>
+<style lang="scss">
+  @use 'sass:math';
+  @use '../styles/fluid' as *;
+
+  $container-max: 1200;
+  $gap-px: 24;
+  $gap-pct: percentage(math.div($gap-px, $container-max));
+
   .container {
-    max-width: 1200px;
+    --container-max: #{$container-max}px;
+    max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding-inline: 1.5rem;
+  }
+
+  .grid-wrapper {
+    width: 100%;
+    margin-right: -#{$gap-pct};
+    margin-right: -#{$gap-pct};
   }
 
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  .card-wrapper {
+    @include fluid-prop(padding, 6px, 6px, 9px, 12px);
+    max-width: calc(var(--container-max) / 3);
+    margin: 0 auto;
   }
 
   .card {
@@ -60,6 +84,6 @@ const exhibitions = Object.values(exhibitionFiles)
     font-size: var(--font-h3);
     color: var(--card-heading);
     text-align: center;
-    padding: 1rem;
+    @include fluid-prop(padding, 0.6rem, 0.8rem, 1rem, 1rem);
   }
 </style>
