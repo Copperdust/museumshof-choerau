@@ -1,0 +1,39 @@
+@use 'fluid' as *;
+
+/*
+ * Typography Scale
+ *
+ * Breakpoints: 320px → 768px → 1280px → 1440px
+ * Values: mobile → tablet → desktop → large desktop
+ */
+
+:root {
+  /* Hero */
+  @include fluid-prop(--font-hero-title, 1.75rem, 2rem, 2.5rem, 3rem);
+  @include fluid-prop(--font-hero-subtitle, 1rem, 1rem, 1.25rem, 1.5rem);
+
+  /* Headings */
+  @include fluid-prop(--font-h2, 1.5rem, 1.6rem, 1.8rem, 2rem);
+  @include fluid-prop(--font-h3, 1rem, 1.05rem, 1.1rem, 1.2rem);
+  @include fluid-prop(--font-aktuelles-sub, 1.2rem, 1.3rem, 1.4rem, 1.6rem);
+
+  /* Highlighted text (hours time, booking heading) */
+  @include fluid-prop(--font-highlight, 1.1rem, 1.15rem, 1.2rem, 1.3rem);
+
+  /* Body text */
+  @include fluid-prop(--font-body, 0.9rem, 0.925rem, 0.95rem, 1rem);
+  @include fluid-prop(--font-nav, 0.85rem, 0.875rem, 0.9rem, 0.95rem);
+  @include fluid-prop(--font-label, 0.8rem, 0.825rem, 0.85rem, 0.9rem);
+  @include fluid-prop(--font-small, 0.75rem, 0.8rem, 0.825rem, 0.85rem);
+  @include fluid-prop(--font-btn, 0.9rem, 0.925rem, 0.95rem, 1rem);
+
+  /* Event date badge */
+  @include fluid-prop(--font-event-day, 1rem, 1.05rem, 1.1rem, 1.2rem);
+  @include fluid-prop(--font-event-month, 0.55rem, 0.575rem, 0.6rem, 0.65rem);
+  @include fluid-prop(--font-event-year, 0.5rem, 0.525rem, 0.55rem, 0.6rem);
+  @include fluid-prop(--font-event-title, 0.85rem, 0.875rem, 0.9rem, 0.95rem);
+
+  /* Sizing */
+  @include fluid-prop(--size-logo, 150px, 150px, 150px, 200px);
+  @include fluid-prop(--spacing-nav-link, 0.4rem, 0.5rem, 0.65rem, 0.75rem);
+}

@@ -108,7 +108,7 @@ function isPast(dateStr: string): boolean {
 .event-date .month {
   width: 100%;
   text-align: center;
-  font-size: 0.65rem;
+  font-size: var(--font-event-month);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -119,7 +119,7 @@ function isPast(dateStr: string): boolean {
 }
 
 .event-date .day {
-  font-size: 1.2rem;
+  font-size: var(--font-event-day);
   font-weight: 700;
   line-height: 1;
   padding-top: 0.2rem;
@@ -128,13 +128,13 @@ function isPast(dateStr: string): boolean {
 }
 
 .event-date .year {
-  font-size: 0.6rem;
+  font-size: var(--font-event-year);
   color: var(--body-text-light);
   padding-bottom: 0.2rem;
 }
 
 .event-title {
-  font-size: 0.95rem;
+  font-size: var(--font-event-title);
   font-weight: 600;
   color: var(--card-heading);
   line-height: 1.2;
@@ -147,7 +147,7 @@ function isPast(dateStr: string): boolean {
 }
 
 .booking-wrapper h3 {
-  font-size: 1.3rem;
+  font-size: var(--font-highlight);
   color: var(--section-heading);
   margin-bottom: 1rem;
 }

@@ -220,12 +220,8 @@ onUnmounted(() => {
 }
 
 @media (max-width: 768px) {
-  .banner-images {
-    flex-direction: column;
-  }
-
-  .banner-image {
-    height: 33.33%;
+  .banner-image:nth-child(3) {
+    display: none;
   }
 }
 </style>

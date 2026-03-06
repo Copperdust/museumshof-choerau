@@ -9,12 +9,12 @@ const isOpen = ref(false)
 const scrolled = ref(false)
 
 const links = [
-  { href: '#start', label: 'Start' },
-  { href: '#ausstellungen', label: 'Unsere Ausstellungsbereiche' },
-  { href: '#galerie', label: 'Galerie' },
+  { href: '#ausstellungen', label: 'Ausstellungen' },
+  { href: '#aktuelles', label: 'Aktuelles' },
+  { href: '#termine', label: 'Termine' },
+  { href: '#beschreibung', label: 'Das Museum' },
   { href: '#oeffnungszeiten', label: 'Öffnungszeiten' },
-  { href: '#anfahrt', label: 'Anfahrt' },
-  { href: '#kontakt', label: 'Kontakt/Impressum' },
+  { href: '#kontakt', label: 'Kontakt' },
 ]
 
 function onScroll() {
@@ -81,21 +81,28 @@ onUnmounted(() => {
 }
 
 .logo-img {
-  height: 40px;
-  width: auto;
+  width: var(--size-logo);
+  height: auto;
+  max-height: 40px;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 1.5rem;
+  gap: 0;
+  height: 100%;
+  align-items: stretch;
 }
 
 .nav-links a {
   color: var(--nav-link);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: var(--font-nav);
   transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-nav-link);
+  height: 100%;
 }
 
 .nav-links a:hover {

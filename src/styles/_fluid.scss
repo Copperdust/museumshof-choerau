@@ -1,0 +1,55 @@
+@use 'sass:math';
+
+// Fluid typography with multi-breakpoint support
+//
+// 2-value function (simple):
+//   font-size: fluid(1rem, 2rem);
+//   → clamp() from bp-1 to bp-4
+//
+// 4-value mixin (piecewise, uses media queries):
+//   @include fluid-prop(--font-hero, 1.75rem, 2rem, 2.5rem, 3rem);
+//   → 3 clamp() segments with media query breakpoints
+
+$bp-1: 320px !default;
+$bp-2: 768px !default;
+$bp-3: 1280px !default;
+$bp-4: 1440px !default;
+
+@function _strip-unit($value) {
+  @return math.div($value, $value * 0 + 1);
+}
+
+@function _clamp-seg($min, $max, $min-bp, $max-bp) {
+  $min-val: _strip-unit($min);
+  $max-val: _strip-unit($max);
+  $min-vw: _strip-unit($min-bp);
+  $max-vw: _strip-unit($max-bp);
+  $u: unit($min);
+
+  // Convert to px for slope calculation (vw is px-based)
+  $px-per-unit: if($u == 'px', 1, 16);
+  $min-px: $min-val * $px-per-unit;
+  $max-px: $max-val * $px-per-unit;
+
+  $slope: math.div($max-px - $min-px, $max-vw - $min-vw);
+  $intercept-px: $min-px - $slope * $min-vw;
+  $intercept: math.div($intercept-px, $px-per-unit);
+
+  @return clamp(#{$min}, #{$intercept}#{$u} + #{$slope * 100}vw, #{$max});
+}
+
+@function fluid($min, $max) {
+  @return _clamp-seg($min, $max, $bp-1, $bp-4);
+}
+
+@mixin fluid-prop($prop, $s1, $s2, $s3, $s4) {
+  #{$prop}: #{_clamp-seg($s1, $s2, $bp-1, $bp-2)};
+
+  @media (min-width: $bp-2) {
+    #{$prop}: #{_clamp-seg($s2, $s3, $bp-2, $bp-3)};
+  }
+
+  @media (min-width: $bp-3) {
+    #{$prop}: #{_clamp-seg($s3, $s4, $bp-3, $bp-4)};
+  }
+}

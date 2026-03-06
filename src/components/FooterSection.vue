@@ -12,7 +12,7 @@
   color: var(--footer-text);
   text-align: center;
   padding: 1.5rem;
-  font-size: 0.85rem;
+  font-size: var(--font-small);
 }
 
 .container {

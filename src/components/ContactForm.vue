@@ -34,7 +34,7 @@ function handleSubmit() {
 
 <style scoped>
 h3 {
-  font-size: 1.2rem;
+  font-size: var(--font-h3);
   color: var(--form-label);
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
@@ -50,7 +50,7 @@ h3 {
 
 label {
   display: block;
-  font-size: 0.9rem;
+  font-size: var(--font-label);
   font-weight: 600;
   color: var(--form-label);
   margin-bottom: 0.25rem;
@@ -67,7 +67,7 @@ textarea {
   border: 1px solid #ddd;
   border-radius: 4px;
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: var(--font-body);
   transition: border-color 0.2s;
 }
 
@@ -84,7 +84,7 @@ textarea:focus {
   border: none;
   padding: 0.75rem 2rem;
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: var(--font-btn);
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;

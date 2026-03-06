@@ -154,7 +154,7 @@ onUnmounted(() => {
 }
 
 .contact-card :deep(h2) {
-  font-size: 1.2rem;
+  font-size: var(--font-h3);
   color: var(--section-heading);
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
@@ -200,6 +200,10 @@ onUnmounted(() => {
     position: relative;
     top: 0;
     height: 300px;
+  }
+
+  .banner-image:nth-child(3) {
+    display: none;
   }
 
   .contact-overlay {
