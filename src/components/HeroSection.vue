@@ -36,7 +36,8 @@ import ImageBanner from './ImageBanner.vue'
 export default { components: { ImageBanner } }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@use '../styles/fluid' as *;
 /* Breakpoints: 1280px (desktop→tablet), 768px (tablet→mobile) */
 
 .hero-wrapper {
@@ -49,7 +50,10 @@ export default { components: { ImageBanner } }
   justify-content: center;
   background: linear-gradient(135deg, var(--hero-overlay-from) 0%, var(--hero-overlay-to) 100%);
   text-align: center;
-  padding: 3rem;
+  @include fluid-prop(padding-top, 1rem, 1.5rem, 2.5rem, 3rem);
+  @include fluid-prop(padding-bottom, 1rem, 1.5rem, 2.5rem, 3rem);
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 /* Floating overlay on large screens */
