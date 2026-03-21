@@ -1,5 +1,8 @@
 # build output
 dist/
+
+# generated webp images (rebuilt from source JPG/PNG by scripts/optimize-images.mjs)
+public/images/**/*.webp
 # generated types
 .astro/
 

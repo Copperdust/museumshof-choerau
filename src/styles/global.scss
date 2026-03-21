@@ -1,3 +1,4 @@
+@use 'fluid' as *;
 @import './colors.css';
 @import './typography';
 
@@ -49,7 +50,7 @@ a:hover {
 }
 
 .site-section {
-  padding: 4rem 0;
+  @include fluid-prop(padding-block, 2rem, 3rem, 4rem, 4rem);
 }
 
 .site-section:nth-child(even) {

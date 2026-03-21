@@ -14,7 +14,7 @@ const images = [
   'IMG_0271', 'IMG_0273', 'IMG_0274', 'IMG_0275', 'IMG_0281', 'IMG_0287',
   'IMG_9864', 'IMG_9865',
 ].map((name) => ({
-  src: `/images/gallery/${name}.JPG`,
+  src: `/images/gallery/${name}.webp`,
   alt: `Museumshof Chörau - ${name}`,
 }))
 
@@ -87,7 +87,8 @@ function slideTo(index: number) {
   </section>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use '../styles/fluid' as *;
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -96,7 +97,9 @@ function slideTo(index: number) {
 
 .video-wrapper {
   max-width: 800px;
-  margin: 1.5rem auto 5rem;
+  @include fluid-prop(margin-top, 1rem, 1.25rem, 1.5rem, 1.5rem);
+  @include fluid-prop(margin-bottom, 2.5rem, 3.5rem, 5rem, 5rem);
+  margin-inline: auto;
   aspect-ratio: 16 / 9;
 }
 

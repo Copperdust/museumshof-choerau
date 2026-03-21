@@ -3,8 +3,8 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "node scripts/optimize-images.mjs && astro dev",
+    "build": "node scripts/optimize-images.mjs && astro build && find dist/images -type f \\( -name '*.jpg' -o -name '*.JPG' -o -name '*.jpeg' -o -name '*.png' \\) -delete",
     "preview": "astro preview",
     "astro": "astro"
   },

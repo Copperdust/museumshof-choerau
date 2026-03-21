@@ -8,7 +8,7 @@ const props = defineProps<{
 
 // Reuse image loading from global
 const allImages = Object.entries(
-  import.meta.glob('/public/images/gallery/*.JPG', { eager: true })
+  import.meta.glob('/public/images/gallery/*.webp', { eager: true })
 ).map(([path, mod]: [string, any]) => ({
   src: path.replace('/public', ''),
   width: mod.default?.width ?? 1000,
@@ -94,7 +94,8 @@ onUnmounted(() => {
   </section>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use '../styles/fluid' as *;
 .contact-banner {
   position: relative;
   overflow: hidden;
@@ -134,21 +135,21 @@ onUnmounted(() => {
 .contact-overlay {
   position: relative;
   z-index: 2;
-  padding: 4rem 4rem;
+  @include fluid-prop(padding, 1.5rem, 2rem, 3rem, 4rem);
 }
 
 .contact-cards {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 2rem;
+  @include fluid-prop(gap, 1rem, 1.5rem, 2rem, 2rem);
 }
 
 .contact-card {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 8px;
-  padding: 2rem;
+  @include fluid-prop(padding, 1.25rem, 1.5rem, 1.75rem, 2rem);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   flex: none;
 }
@@ -208,7 +209,6 @@ onUnmounted(() => {
 
   .contact-overlay {
     position: relative;
-    padding: 2rem 1.5rem;
   }
 
   .contact-cards {

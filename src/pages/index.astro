@@ -15,9 +15,13 @@ import AktuellesSection from '../components/AktuellesSection.astro';
 import ImageBanner from '../components/ImageBanner.vue';
 import FooterSection from '../components/FooterSection.vue';
 
+// Rewrite image paths to use build-generated WebP
+const toWebp = (path: string) => path.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+
 // Site config
 const siteConfig = await import('../content/site.md');
-const { logo, heroTitle, heroSubtitle, youtubeVideo } = siteConfig.frontmatter;
+const { heroTitle, heroSubtitle, youtubeVideo } = siteConfig.frontmatter;
+const logo = toWebp(siteConfig.frontmatter.logo);
 
 // Load events from markdown files in content/events/
 const eventFiles = import.meta.glob('../content/events/*.md', { eager: true });
@@ -32,7 +36,7 @@ const events = Object.values(eventFiles)
 // Collect all gallery + banner images with dimensions for hero
 // Astro's import.meta.glob with eager gives us image metadata at build time
 const imageModules = import.meta.glob<{ default: ImageMetadata }>(
-  '/public/images/gallery/*.JPG',
+  '/public/images/gallery/*.webp',
   { eager: true }
 );
 
@@ -55,11 +59,11 @@ const heroImageCandidates = Object.entries(imageModules)
   <GallerySection client:visible youtubeVideo={youtubeVideo} />
   <AktuellesSection />
   <EventsSection client:visible events={events} />
-  <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={30} imageSlant={-20} />
+  <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={30} imageSlant={-20} padded />
   <MuseumDescriptionSection1 />
-  <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={-30} imageSlant={20} />
+  <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={-30} imageSlant={20} padded />
   <MuseumDescriptionSection2 />
-  <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={30} imageSlant={-20} />
+  <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={30} imageSlant={-20} padded />
   <HoursSection />
   <ContactSection />
   <MapSection />

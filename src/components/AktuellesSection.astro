@@ -1,13 +1,13 @@
 ---
 const file = await import('../content/aktuelles.md');
-const Content = file.default;
+// Rewrite image srcs in rendered markdown to use WebP
+const rawHtml = await file.compiledContent();
+const webpHtml = rawHtml.replace(/src="([^"]+)\.(jpg|jpeg|png)"/gi, 'src="$1.webp"');
 ---
 
 <section id="aktuelles" class="site-section">
   <div class="container">
-    <div class="aktuelles-text">
-      <Content />
-    </div>
+    <div class="aktuelles-text" set:html={webpHtml} />
   </div>
 </section>
 

@@ -13,11 +13,13 @@ const props = withDefaults(defineProps<{
   parallax?: boolean
   slant?: number
   imageSlant?: number
+  padded?: boolean
 }>(), {
   height: '40vh',
   parallax: true,
   slant: 0,
   imageSlant: 0,
+  padded: false,
 })
 
 function pickRandom(exclude: string[]): BannerImage {
@@ -152,27 +154,36 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="banner" ref="banner" :style="bannerStyle">
-    <div :class="['banner-images', { parallax: props.parallax }]" :style="props.parallax ? { transform: `translateY(${scrollOffset}px)` } : {}">
-      <div v-for="(img, i) in bannerImages" :key="i" class="banner-image" :style="imageClip(i)">
-        <img :src="img.src" alt="Museumshof Chörau" />
-        <img
-          v-if="incoming && incoming.slot === i"
-          :src="incoming.src"
-          class="incoming"
-          alt="Museumshof Chörau"
-        />
+  <div :class="{ 'banner-wrapper': props.padded }">
+    <div class="banner" ref="banner" :style="bannerStyle">
+      <div :class="['banner-images', { parallax: props.parallax }]" :style="props.parallax ? { transform: `translateY(${scrollOffset}px)` } : {}">
+        <div v-for="(img, i) in bannerImages" :key="i" class="banner-image" :style="imageClip(i)">
+          <img :src="img.src" alt="Museumshof Chörau" />
+          <img
+            v-if="incoming && incoming.slot === i"
+            :src="incoming.src"
+            class="incoming"
+            alt="Museumshof Chörau"
+          />
+        </div>
       </div>
+      <div class="banner-shadow" :style="{ transform: `rotate(${shadowAngle}deg) scale(1.1)` }"></div>
+      <slot />
     </div>
-    <div class="banner-shadow" :style="{ transform: `rotate(${shadowAngle}deg) scale(1.1)` }"></div>
-    <slot />
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use '../styles/fluid' as *;
+
 .banner {
   position: relative;
   overflow: hidden;
+}
+
+.banner-wrapper {
+  @include fluid-prop(margin-top, 3rem, 1rem, 0, 0);
+  @include fluid-prop(margin-bottom, 3rem, 1rem, 0, 0);
 }
 
 .banner-images {

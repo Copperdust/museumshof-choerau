@@ -3,7 +3,7 @@ const exhibitionFiles = import.meta.glob('../content/exhibitions/*.md', { eager:
 const exhibitions = Object.values(exhibitionFiles)
   .map((file: any) => ({
     title: file.frontmatter.title,
-    image: file.frontmatter.image,
+    image: file.frontmatter.image.replace(/\.(jpg|jpeg|png)$/i, '.webp'),
     order: file.frontmatter.order ?? 99,
   }))
   .sort((a, b) => a.order - b.order);
