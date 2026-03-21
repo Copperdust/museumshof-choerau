@@ -5,6 +5,7 @@ import 'vue3-carousel/carousel.css'
 
 const props = defineProps<{
   youtubeVideo?: string
+  base?: string
 }>()
 
 const images = [
@@ -14,7 +15,7 @@ const images = [
   'IMG_0271', 'IMG_0273', 'IMG_0274', 'IMG_0275', 'IMG_0281', 'IMG_0287',
   'IMG_9864', 'IMG_9865',
 ].map((name) => ({
-  src: `/images/gallery/${name}.webp`,
+  src: `${props.base || ''}/images/gallery/${name}.webp`,
   alt: `Museumshof Chörau - ${name}`,
 }))
 

@@ -10,7 +10,7 @@ const props = defineProps<{
 const allImages = Object.entries(
   import.meta.glob('/public/images/gallery/*.webp', { eager: true })
 ).map(([path, mod]: [string, any]) => ({
-  src: path.replace('/public', ''),
+  src: (import.meta.env.BASE_URL || '').replace(/\/$/, '') + path.replace('/public', ''),
   width: mod.default?.width ?? 1000,
   height: mod.default?.height ?? 700,
 })).filter(img => img.width >= 800 && img.height >= 600)

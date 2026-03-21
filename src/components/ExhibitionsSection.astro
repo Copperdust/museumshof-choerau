@@ -1,9 +1,10 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const exhibitionFiles = import.meta.glob('../content/exhibitions/*.md', { eager: true });
 const exhibitions = Object.values(exhibitionFiles)
   .map((file: any) => ({
     title: file.frontmatter.title,
-    image: file.frontmatter.image.replace(/\.(jpg|jpeg|png)$/i, '.webp'),
+    image: base + file.frontmatter.image.replace(/\.(jpg|jpeg|png)$/i, '.webp'),
     order: file.frontmatter.order ?? 99,
   }))
   .sort((a, b) => a.order - b.order);

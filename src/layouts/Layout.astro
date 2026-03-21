@@ -12,7 +12,7 @@ const { title = 'Museumshof Chorau - Das Leben in den Jahren 1930-1989' } = Astr
 <html lang="de">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.svg`} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Museumshof Chorau - Erleben Sie das Leben in den Jahren 1930 bis 1989. Ein umgebauter Dreiseitenhof mit Wohnungen, Spielzeugmuseum, Radio- und Fernsehmuseum." />
     <title>{title}</title>

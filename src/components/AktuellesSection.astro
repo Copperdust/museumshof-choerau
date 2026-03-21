@@ -1,8 +1,9 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const file = await import('../content/aktuelles.md');
-// Rewrite image srcs in rendered markdown to use WebP
+// Rewrite image srcs in rendered markdown to use WebP and prepend base path
 const rawHtml = await file.compiledContent();
-const webpHtml = rawHtml.replace(/src="([^"]+)\.(jpg|jpeg|png)"/gi, 'src="$1.webp"');
+const webpHtml = rawHtml.replace(/src="([^"]+)\.(jpg|jpeg|png)"/gi, `src="${base}$1.webp"`);
 ---
 
 <section id="aktuelles" class="site-section">
