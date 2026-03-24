@@ -81,7 +81,7 @@ function isPast(dateStr: string): boolean {
 
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 0.75rem 1.2rem;
 }
 
