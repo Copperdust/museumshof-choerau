@@ -34,7 +34,7 @@ const exhibitions = Object.values(exhibitionFiles)
   @use 'sass:math';
   @use '../styles/fluid' as *;
 
-  $container-max: 1200;
+  $container-max: 950;
   $gap-px: 24;
   $gap-pct: percentage(math.div($gap-px, $container-max));
 
@@ -45,6 +45,12 @@ const exhibitions = Object.values(exhibitionFiles)
     padding-inline: 1.5rem;
   }
 
+  @media (min-width: 1680px) {
+    .container {
+      --container-max: clamp(950px, 281.82px + 39.773vw, 1300px);
+    }
+  }
+
   .grid-wrapper {
     width: 100%;
     margin-right: -#{$gap-pct};
@@ -52,15 +58,25 @@ const exhibitions = Object.values(exhibitionFiles)
   }
 
   .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
   }
 
   .card-wrapper {
     @include fluid-prop(padding, 6px, 6px, 9px, 12px);
-    max-width: calc(var(--container-max) / 3);
-    margin: 0 auto;
+    flex: 0 0 275px;
+  }
+
+  @media (min-width: 1680px) {
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card-wrapper {
+      flex: none;
+    }
   }
 
   .card {
@@ -82,9 +98,13 @@ const exhibitions = Object.values(exhibitionFiles)
   }
 
   h3 {
-    font-size: var(--font-h3);
+    font-size: 1.1rem;
     color: var(--card-heading);
     text-align: center;
     @include fluid-prop(padding, 0.6rem, 0.8rem, 1rem, 1rem);
+
+    @media (min-width: 1680px) {
+      font-size: clamp(1.1rem, 0.909rem + 0.1818vw, 1.2rem);
+    }
   }
 </style>

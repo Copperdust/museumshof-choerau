@@ -30,7 +30,7 @@ const galleryConfig = {
 }
 
 const thumbConfig = {
-  itemsToShow: 6,
+  itemsToShow: 'auto' as const,
   wrapAround: true,
   gap: 10,
   mouseDrag: true,
@@ -117,6 +117,7 @@ function slideTo(index: number) {
 }
 
 #gallery {
+  height: clamp(200px, 60vh, 675px);
   border-radius: 8px;
   overflow: hidden;
   background: var(--gallery-bg);
@@ -127,14 +128,28 @@ function slideTo(index: number) {
   --vc-nav-height: 48px;
 }
 
+#gallery :deep(.carousel__viewport),
+#gallery :deep(.carousel__track),
+#gallery :deep(.carousel__slide) {
+  height: 100%;
+  max-height: 75vh;
+}
+
 .gallery-img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
   object-fit: contain;
 }
 
 #thumbnails {
+  height: clamp(50px, 8vh, 100px);
   margin-top: 0.75rem;
+}
+
+#thumbnails :deep(.carousel__viewport),
+#thumbnails :deep(.carousel__track),
+#thumbnails :deep(.carousel__slide) {
+  height: 100%;
 }
 
 .thumb {
@@ -145,6 +160,7 @@ function slideTo(index: number) {
   border: 2px solid transparent;
   border-radius: 4px;
   overflow: hidden;
+  height: 100%;
 }
 
 .thumb.active {
@@ -157,8 +173,8 @@ function slideTo(index: number) {
 }
 
 .thumb img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
+  width: auto;
+  height: 100%;
   object-fit: cover;
   border-radius: 2px;
   display: block;

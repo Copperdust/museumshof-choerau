@@ -46,7 +46,7 @@
   --card-text: var(--body-text-light);
 
   /* ===== Gallery ===== */
-  --gallery-bg: var(--color-black);
+  --gallery-bg: transparent;
   --gallery-nav-bg: rgba(44, 24, 16, 0.6);
   --gallery-nav-color: #faf6f1;
   --gallery-thumb-border: var(--color-tan);

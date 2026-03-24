@@ -49,7 +49,9 @@ function isPast(dateStr: string): boolean {
             <span class="day">{{ new Date(event.date).getDate() }}</span>
             <span class="year">{{ new Date(event.date).getFullYear() }}</span>
           </div>
-          <div class="event-title">{{ event.title }}</div>
+          <div class="event-text">
+            <span class="event-title">{{ event.title }}</span>
+          </div>
         </article>
       </div>
       <p v-else class="no-events">
@@ -72,69 +74,74 @@ function isPast(dateStr: string): boolean {
 
 <style scoped>
 .container {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 0.75rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem 1.2rem;
 }
 
 .event-row {
   display: grid;
-  grid-template-columns: 52px 1fr;
-  align-items: center;
-  gap: 1rem;
-  background: var(--card-bg);
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  grid-template-columns: auto 1fr;
+  align-items: stretch;
+  gap: 0.5rem;
 }
 
 .event-date {
   display: grid;
   grid-template-rows: auto 1fr auto;
   justify-items: center;
-  width: 52px;
-  border-radius: 6px;
+  align-items: center;
+  width: 72px;
+  aspect-ratio: 5 / 6;
+  border-radius: 8px;
   overflow: hidden;
   background: var(--card-bg);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .event-date .month {
   width: 100%;
   text-align: center;
-  font-size: var(--font-event-month);
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding-top: 0.2rem;
-  padding-bottom: 0.1rem;
+  padding: 0.2rem 0;
   background: var(--event-date-bg);
   color: var(--event-date-text);
 }
 
 .event-date .day {
-  font-size: var(--font-event-day);
+  font-size: 1.8rem;
   font-weight: 700;
   line-height: 1;
-  padding-top: 0.2rem;
-  padding-bottom: 0.1rem;
   color: var(--card-heading);
 }
 
 .event-date .year {
-  font-size: var(--font-event-year);
+  font-size: 0.75rem;
   color: var(--body-text-light);
-  padding-bottom: 0.2rem;
+  padding-bottom: 0.12rem;
+  margin-top: -6px;
+}
+
+.event-text {
+  display: flex;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .event-title {
-  font-size: var(--font-event-title);
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--card-heading);
   line-height: 1.2;
