@@ -58,8 +58,14 @@ const exhibitions = Object.values(exhibitionFiles)
 
   .card-wrapper {
     @include fluid-prop(padding, 4px, 5px, 6px, 8px);
-    flex: 0 0 33.3333%;
+    flex: 0 0 50%;
     max-width: 320px;
+  }
+
+  @media (min-width: 420px) {
+    .card-wrapper {
+      flex: 0 0 33.3333%;
+    }
   }
 
   @media (min-width: 1024px) {
