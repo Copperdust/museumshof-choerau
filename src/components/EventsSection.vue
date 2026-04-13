@@ -176,4 +176,55 @@ function isPast(dateStr: string): boolean {
   color: var(--card-text);
   font-style: italic;
 }
+
+@media (max-width: 448px) {
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .event-row {
+    grid-template-columns: 52px 1fr;
+    align-items: center;
+    gap: 1rem;
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .event-date {
+    width: 52px;
+    aspect-ratio: auto;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .event-date .month {
+    font-size: 0.7rem;
+    padding: 0.15rem 0;
+  }
+
+  .event-date .day {
+    font-size: 1.35rem;
+    padding: 0.15rem 0 0;
+  }
+
+  .event-date .year {
+    font-size: 0.7rem;
+    margin-top: 0;
+    padding-bottom: 0.15rem;
+  }
+
+  .event-text {
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .event-title {
+    font-size: 0.95rem;
+  }
+}
 </style>
