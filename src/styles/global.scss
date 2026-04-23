@@ -71,8 +71,9 @@ h2 {
 h2::after {
   content: '';
   display: block;
-  width: 60px;
+  width: 96px;
   height: 3px;
   background: var(--section-heading-underline);
+  border-radius: 2px;
   margin: 0.75rem auto 0;
 }
