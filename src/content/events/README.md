@@ -8,13 +8,23 @@ description: Diese Datei ist nur eine Anleitung - bitte nicht loeschen.
 
 Um einen neuen Termin hinzuzufuegen, erstellen Sie eine neue .md Datei in diesem Ordner.
 
-Format:
+Felder:
+
+- `title` (Pflicht) — Name der Veranstaltung.
+- `date` (Pflicht) — Startdatum im Format `JJJJ-MM-TT`.
+- `endDate` (optional) — Enddatum fuer mehrtaegige Ausstellungen.
+- `description` (optional) — Kurze Unterzeile unter dem Titel (z. B. `von Apfelreibe bis Zitronenpresse`). Weglassen, wenn es nichts hinzuzufuegen gibt.
+- `badge` (optional) — Kurzer Hinweis als Plakette, z. B. `Eintritt frei`.
+
+Beispiel:
 
 ```
 ---
 title: Name der Veranstaltung
 date: 2026-05-15
-description: Kurze Beschreibung der Veranstaltung.
+endDate: 2026-05-22
+description: Kurze Unterzeile
+badge: Eintritt frei
 ---
 ```
 

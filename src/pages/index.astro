@@ -21,17 +21,20 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 // Site config
 const siteConfig = await import('../content/site.md');
-const { heroTitle, heroSubtitle, youtubeVideo } = siteConfig.frontmatter;
+const { heroTitle, heroSubtitle, youtubeVideo, eventsIntro } = siteConfig.frontmatter;
 const logo = base + toWebp(siteConfig.frontmatter.logo);
 
 // Load events from markdown files in content/events/
 const eventFiles = import.meta.glob('../content/events/*.md', { eager: true });
+const toISO = (d: unknown): string => String(d).slice(0, 10);
 const events = Object.values(eventFiles)
   .filter((file: any) => file.frontmatter.title !== 'Beispiel')
   .map((file: any) => ({
     title: file.frontmatter.title,
-    date: file.frontmatter.date,
+    start: toISO(file.frontmatter.date),
+    end: file.frontmatter.endDate ? toISO(file.frontmatter.endDate) : null,
     description: file.frontmatter.description || '',
+    badge: file.frontmatter.badge || '',
   }));
 
 // Collect all gallery + banner images with dimensions for hero
@@ -59,7 +62,7 @@ const heroImageCandidates = Object.entries(imageModules)
   <ExhibitionsSection />
   <GallerySection client:visible youtubeVideo={youtubeVideo} base={base} />
   <AktuellesSection />
-  <EventsSection client:visible events={events} />
+  <EventsSection client:visible events={events} intro={eventsIntro} />
   <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={30} imageSlant={-20} padded />
   <MuseumDescriptionSection1 />
   <ImageBanner client:only="vue" images={heroImageCandidates} height="25vh" slant={-30} imageSlant={20} padded />
